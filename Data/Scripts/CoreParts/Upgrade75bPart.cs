@@ -32,6 +32,7 @@ namespace Scripts
                 HardWare = new HardwareDef
                 {
                     InventorySize = 1f,
+                    IdlePower = 0.25f, // Power draw in MW. Defaults to 0.001
                     Type = Default, //Default
                     BlockDistance = 6,
                 },

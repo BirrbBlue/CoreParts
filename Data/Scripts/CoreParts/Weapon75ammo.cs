@@ -23,9 +23,9 @@ namespace Scripts
     {
         private AmmoDef AmmoType1 => new AmmoDef
         {
-            AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo
-            AmmoRound = "AmmoType1", // name of ammo in terminal, should be unique for each ammo type. Used for Name field in server config
-            HybridRound = false, //AmmoMagazine based weapon with energy cost
+            AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
+            AmmoRound = "AmmoType1", // Name of ammo in terminal, should be different for each ammo type used by the same weapon.
+            HybridRound = false, // Use both a physical ammo magazine and energy per shot
             EnergyCost = 0.00000000001f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 999999999f,
             Mass = 0f, // in kilograms

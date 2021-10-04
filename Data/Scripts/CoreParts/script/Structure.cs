@@ -75,6 +75,7 @@ namespace Scripts
                     [ProtoMember(1)] internal float InventorySize;
                     [ProtoMember(2)] internal HardwareType Type;
                     [ProtoMember(3)] internal int BlockDistance;
+                    [ProtoMember(4)] internal float IdlePower;
                 }
 
                 [ProtoContract]
@@ -133,6 +134,7 @@ namespace Scripts
                 public struct HardwareDef
                 {
                     [ProtoMember(1)] internal float InventorySize;
+                    [ProtoMember(2)] internal float IdlePower;
                 }
 
                 [ProtoContract]
@@ -482,6 +484,7 @@ namespace Scripts
 					[ProtoMember(11)] internal int HomeAzimuth;
 					[ProtoMember(12)] internal int HomeElevation;
                     [ProtoMember(13)] internal CriticalDef CriticalReaction;
+                    [ProtoMember(14)] internal float IdlePower;
 
                     [ProtoContract]
                     public struct CriticalDef
