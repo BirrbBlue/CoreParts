@@ -299,6 +299,7 @@ namespace Scripts
                         StopFiring,
                         StopTracking,
                         LockDelay,
+                        Init,
                     }
 
 

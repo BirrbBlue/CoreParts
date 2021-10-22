@@ -114,7 +114,7 @@ namespace Scripts
                     SubpartId = Names("f75recoil"),
                     BarrelId = "muzzle_missile_1", //only used for firing, use "Any" for all muzzles
                     StartupFireDelay = 60,
-                    AnimationDelays = Delays(firingDelay : 0, reloadingDelay: 0, overheatedDelay: 0, trackingDelay: 0, lockedDelay: 0, onDelay: 0, offDelay: 0, burstReloadDelay: 0, outOfAmmoDelay: 0, preFireDelay: 0),//Delay before animation starts
+                    AnimationDelays = Delays(firingDelay : 0, reloadingDelay: 0, overheatedDelay: 0, trackingDelay: 0, lockedDelay: 0, onDelay: 0, offDelay: 0, burstReloadDelay: 0, outOfAmmoDelay: 0, preFireDelay: 0, stopFiringDelay: 0, stopTrackingDelay:0, initDelay:0),//Delay before animation starts
                     Reverse = Events(),
                     Loop = Events(),
                     EventMoveSets = new Dictionary<PartAnimationSetDef.EventTriggers, RelMove[]>
