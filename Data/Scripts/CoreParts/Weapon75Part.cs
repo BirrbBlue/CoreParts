@@ -121,7 +121,7 @@ namespace Scripts {
                     ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
                     RotateBarrelAxis = 0, // For spinning barrels, which axis to spin the barrel around; 0 = none.
                     EnergyPriority = 0, // Deprecated.
-                    MuzzleCheck = false, // Whether the weapon AI should deactivate if muzzle LOS check fails.
+                    MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
                     Debug = false, // Force enables debug mode.
                     RestrictionRadius = 0, // Prevents other blocks of this type from being placed within this distance of the centre of the block.
                     CheckInflatedBox = false, // If true, the above distance check is performed from the edge of the block instead of the centre.
@@ -175,7 +175,7 @@ namespace Scripts {
                             Restart = false, // Whether to end the previous effect early and spawn a new one.
                             MaxDistance = 50, // Max distance at which this effect should be visible. NOTE: This will use whichever MaxDistance value is higher across Effect1 and Effect2!
                             MaxDuration = 5, // How many ticks the effect should be ended after, if it's still running.
-                            Scale = 1f, // Deprecated, use particle sbc.
+                            Scale = 1f, // Scale of effect.
                         },
                     },
                     Effect2 = new ParticleDef

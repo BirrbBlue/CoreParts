@@ -109,7 +109,7 @@ namespace Scripts
                 Custom = new CustomScalesDef
                 {
                     IgnoreAllOthers = false, // Pass through all blocks not listed below without damaging them.
-                    Types = new[] // List of blocks to apply custom damage multipliers too.
+                    Types = new[] // List of blocks to apply custom damage multipliers to.
                     {
                         new CustomBlocksDef
                         {
@@ -126,52 +126,51 @@ namespace Scripts
             },
             AreaEffect = new AreaDamageDef
             {
-                AreaEffect = Disabled, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-                Base = new AreaInfluence
+                AreaEffect = Disabled, // Disabled = do not use area effect at all; Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
+                Base = new AreaInfluence // Detonation can use Explosive or Radiant.
                 {
-                    Radius = 0f, // the sphere of influence of area effects
-                    EffectStrength = 0f, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
+                    Radius = 0f, // The sphere of influence of the area effect, in metres.
+                    EffectStrength = 0f, // EWAR applies this amount per pulse/hit. Non-EWAR applies this as damage per tick per entity in the area of influence. For Radiant, 0 == use spillover from BaseDamage, otherwise use this value.
                 },
-                Pulse = new PulseDef // interval measured in game ticks (60 == 1 second), pulseChance chance (0 - 100) that an entity in field will be hit
+                Pulse = new PulseDef // Settings for EWAR fields.
                 {
-                    Interval = 0,
-                    PulseChance = 0,
-                    GrowTime = 0,
-                    HideModel = false,
-                    ShowParticle = false,
-                    Particle = new ParticleDef
+                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
+                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
+                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
+                    HideModel = false, // Hide the projectile model if it has one.
+                    ShowParticle = false, // Deprecated.
+                    Particle = new ParticleDef // Particle effect to generate at the field's position.
                     {
-                        Name = "", //ShipWelderArc
-                        ShrinkByDistance = false,
-                        Color = Color(red: 128, green: 0, blue: 0, alpha: 32),
-                        Offset = Vector(x: 0, y: -1, z: 0),
+                        Name = "", // SubtypeId of field particle effect.
+                        ShrinkByDistance = false, // Deprecated.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 1,
-                            Scale = 1,
+                            Loop = false, // Deprecated, set this in particle sbc.
+                            Restart = false, // Not used.
+                            MaxDistance = 5000, // Not used.
+                            MaxDuration = 1, // Not used.
+                            Scale = 1, // Scale of effect.
                         },
                     },
                 },
                 Explosions = new ExplosionDef
                 {
-                    NoVisuals = false,
-                    NoSound = false,
-                    NoShrapnel = false,
-                    NoDeformation = false,
-                    Scale = 1,
-                    CustomParticle = "",
-                    CustomSound = "",
+                    NoVisuals = false, // Don't generate explosion/hit particle effects.
+                    NoSound = false, // Don't play explosion sounds.
+                    NoShrapnel = false, // For Explosive, suppress Keen mechanic for damaging blocks around the explosion.
+                    NoDeformation = false,// For Explosive, suppress block deformation.
+                    Scale = 1, // Scale of explosion particle effect.
+                    CustomParticle = "", // If specified, use this particle effect instead of the generic missile explosion.
+                    CustomSound = "", // If specified, use this sound effect.
                 },
-                Detonation = new DetonateDef
+                Detonation = new DetonateDef // Use detonation if you only want an AoE effect when the projectile hits/dies, or to spawn shrapnel. Set AreaEffect to Explosive or Radiant for explosion damage.
                 {
-                    DetonateOnEnd = false,
-                    ArmOnlyOnHit = false,
-                    DetonationDamage = 0,
-                    DetonationRadius = 0,
-                    MinArmingTime = 0, //Min time in ticks before projectile will arm for detonation (will also affect shrapnel spawning)
+                    DetonateOnEnd = false, // Enable detonation.
+                    ArmOnlyOnHit = false, // Only detonate on impact, not at end of life or when shot down.
+                    DetonationDamage = 0, // Damage to apply on detonation.
+                    DetonationRadius = 0, // Radius of explosion in metres.
+                    MinArmingTime = 0, // Min number of ticks before projectile will arm for detonation (will also affect shrapnel spawning).
                 },
                 EwarFields = new EwarFieldsDef
                 {
@@ -191,15 +190,15 @@ namespace Scripts
             },
             Beams = new BeamDef
             {
-                Enable = false,
-                VirtualBeams = false, // Only one hot beam, but with the effectiveness of the virtual beams combined (better performace)
-                ConvergeBeams = false, // When using virtual beams this option visually converges the beams to the location of the real beam.
-                RotateRealBeam = false, // The real (hot beam) is rotated between all virtual beams, instead of centered between them.
+                Enable = false, // Enable beam behaviour.
+                VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
+                ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
+                RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
                 OneParticle = false, // Only spawn one particle hit per beam weapon.
             },
             Trajectory = new TrajectoryDef
             {
-                Guidance = None,
+                Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 TargetLossDegree = 80f,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
