@@ -27,7 +27,7 @@ namespace Scripts
             AmmoRound = "AmmoType1", // Name of ammo in terminal, should be different for each ammo type used by the same weapon.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
             EnergyCost = 0.1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 999999999f, // Direct damage; one steel plate is worth 100.
+            BaseDamage = 500f, // Direct damage; one steel plate is worth 100.
             Mass = 0f, // In kilograms; how much force the impact will apply to the target.
             Health = 1, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             BackKickForce = 0f, // Recoil.
@@ -351,7 +351,7 @@ namespace Scripts
                 FloatingHitSound = "",
                 HitPlayChance = 0.5f,
                 HitPlayShield = true,
-            }, // Don't edit below this line
+            },
             Ejection = new EjectionDef
             {
                 Type = Particle, // Particle or Item (Inventory Component)
@@ -363,7 +363,7 @@ namespace Scripts
                     ItemLifeTime = 0, // how long item should exist in world
                     Delay = 0, // delay in ticks after shot before ejected
                 }
-            },
+            }, // Don't edit below this line
         };
 
         private AmmoDef AmmoType2 => new AmmoDef

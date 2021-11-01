@@ -20,18 +20,18 @@ namespace Scripts {
                         SubtypeId = "PDCTurretLB",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns.
                         MuzzlePartId = "Boomsticks", // The subpart where your muzzle empties are located.
-                        AzimuthPartId = "",
-                        ElevationPartId = "",
-                        DurabilityMod = 0.25f, // GeneralDamageMultiplier, 0.25f = 400% resistance.
-                        IconName = "TestIcon.dds"
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.25f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
                     new MountPointDef {
                         SubtypeId = "PDCTurretSB",
                         SpinPartId = "Boomsticks",
                         MuzzlePartId = "Boomsticks",
-                        AzimuthPartId = "",
-                        ElevationPartId = "",
-                        DurabilityMod = 0f,
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.05f,
                         IconName = "TestIcon.dds",
                     },
                 },
@@ -88,7 +88,7 @@ namespace Scripts {
                     TurretAttached = true, // Whether this weapon is a turret and should have the UI and API options for such.
                     TurretController = true, // Whether this weapon can physically control the turret's movement.
                     PrimaryTracking = true, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
-                    LockOnFocus = false, // Whether this weapon should automatically fire at a target that has been locked onto via HUD.
+                    LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
                     SuppressFire = false, // If enabled, weapon can only be fired manually.
                     OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
                 },
@@ -103,7 +103,7 @@ namespace Scripts {
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 15, // Default resting elevation
                     InventorySize = 1f, // Inventory capacity in kL.
-                    IdlePower = 0.25f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+                    IdlePower = 0.25f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -171,7 +171,7 @@ namespace Scripts {
 
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false, // Deprecated, set this in particle sbc.
+                            Loop = false, // Set this to the same as in the particle sbc!
                             Restart = false, // Whether to end the previous effect early and spawn a new one.
                             MaxDistance = 50, // Max distance at which this effect should be visible. NOTE: This will use whichever MaxDistance value is higher across Effect1 and Effect2!
                             MaxDuration = 5, // How many ticks the effect should be ended after, if it's still running.
