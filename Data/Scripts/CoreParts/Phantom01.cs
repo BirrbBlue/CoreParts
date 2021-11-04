@@ -53,7 +53,7 @@ namespace Scripts {
             },
             HardPoint = new HardPointDef
             {
-                PartName = "Phantom", // name of weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons)
+                PartName = "Phantom01", // name of weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons)
                 DeviateShotAngle = 0.2f,
                 AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
@@ -92,10 +92,10 @@ namespace Scripts {
                     Type = Phantom, // BlockWeapon, HandWeapon, Phantom 
                     CriticalReaction = new CriticalDef
                     {
-                        Enable = true,
+                        Enable = false,
                         DefaultArmedTimer = 120,
-                        PreArmed = true,
-                        TerminalControls = true,
+                        PreArmed = false,
+                        TerminalControls = false,
                         AmmoRound = "AmmoType2",
                     },
                 },
@@ -180,7 +180,7 @@ namespace Scripts {
                 AmmoType1, AmmoType2, // must list primary, shrapnel and pattern ammos
             },
             //Animations = Weapon75_Animation,
-            Upgrades = UpgradeModules,
+            //Upgrades = UpgradeModules,
             // Don't edit below this line
         };
     }

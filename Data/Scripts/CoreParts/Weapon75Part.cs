@@ -113,7 +113,7 @@ namespace Scripts {
                         DefaultArmedTimer = 120, // Sets default countdown duration.
                         PreArmed = false, // Whether the warhead is armed by default when placed. Best left as false.
                         TerminalControls = true, // Whether the warhead should have terminal controls for arming and detonation.
-                        AmmoRound = "40m", // Optional. If specified, the warhead will always use this ammo on detonation rather than the currently selected ammo.
+                        AmmoRound = "AmmoType2", // Optional. If specified, the warhead will always use this ammo on detonation rather than the currently selected ammo.
                     },
                 },
                 Other = new OtherDef
