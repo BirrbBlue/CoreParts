@@ -126,7 +126,7 @@ namespace Scripts
             },
             AreaEffect = new AreaDamageDef
             {
-                AreaEffect = Disabled, // Disabled = do not use area effect at all; Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
+                AreaEffect = Disabled, // Disabled = do not use area effect at all; Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.
                 Base = new AreaInfluence // Detonation can use Explosive or Radiant.
                 {
                     Radius = 0f, // The sphere of influence of the area effect, in metres.
@@ -185,6 +185,8 @@ namespace Scripts
                         ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
                         ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
                         Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
+                        RelativeMass = false,
+                        TractorRange = 0,
                     },
                 },
             },
