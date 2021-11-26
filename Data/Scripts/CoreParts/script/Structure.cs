@@ -894,6 +894,7 @@ namespace Scripts
                             [ProtoMember(3)] internal Force Position;
                             [ProtoMember(4)] internal bool DisableRelativeMass;
                             [ProtoMember(5)] internal double TractorRange;
+                            [ProtoMember(6)] internal bool ShooterFeelsForce;
                         }
                     }
 

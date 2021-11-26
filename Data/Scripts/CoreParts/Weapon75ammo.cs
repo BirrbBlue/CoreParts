@@ -187,6 +187,7 @@ namespace Scripts
                         Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
                         DisableRelativeMass = false,
                         TractorRange = 0,
+                        ShooterFeelsForce = false,
                     },
                 },
             },
