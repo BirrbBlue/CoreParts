@@ -72,7 +72,7 @@ namespace Scripts {
                 AimingTolerance = 1f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Accurate, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
-                AddToleranceToTracking = false, // Allows turret to only track to the edge of the AimingTolerance cone instead of dead centre.
+                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
                 CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
 
                 Ui = new UiDef
@@ -172,9 +172,9 @@ namespace Scripts {
                         Extras = new ParticleOptionDef
                         {
                             Loop = false, // Set this to the same as in the particle sbc!
-                            Restart = false, // Whether to end the previous effect early and spawn a new one.
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
                             MaxDistance = 50, // Max distance at which this effect should be visible. NOTE: This will use whichever MaxDistance value is higher across Effect1 and Effect2!
-                            MaxDuration = 5, // How many ticks the effect should be ended after, if it's still running.
+                            MaxDuration = 5, // Deprecated.
                             Scale = 1f, // Scale of effect.
                         },
                     },
