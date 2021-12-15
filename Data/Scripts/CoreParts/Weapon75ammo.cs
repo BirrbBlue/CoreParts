@@ -27,7 +27,7 @@ namespace Scripts
             AmmoRound = "AmmoType1", // Name of ammo in terminal, should be different for each ammo type used by the same weapon.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
             EnergyCost = 0.1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 500f, // Direct damage; one steel plate is worth 100.
+            BaseDamage = 111f, // Direct damage; one steel plate is worth 100.
             Mass = 0f, // In kilograms; how much force the impact will apply to the target.
             Health = 1, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             BackKickForce = 0f, // Recoil.
@@ -126,11 +126,21 @@ namespace Scripts
             },
             AreaEffect = new AreaDamageDef
             {
-                AreaEffect = Disabled, // Disabled = do not use area effect at all; Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.
-                Base = new AreaInfluence // Detonation can use Explosive or Radiant.
+                AreaEffectRadius = 5,  //Radius, in meters, for radiant damage to be apploed
+                AreaEffectDamage = 20f, //Base damage applied for radiant
+                AreaEffectMaxDepth = 1f, //Maximum depth in meters to penetrate, perpendicular to face struck by projectile
+                AreaEffectMaxAbsorb = 35f, //DarkStar gets to describe this one
+                RadiantFalloff = Falloff.Curve, //.None applies the same damage to all blocks in radius
+                                                //.Linear drops evenly by distance from center out to max radius
+                                                //.Curve drops off damage sharply as it approaches the max radius
+                                                //.InvCurve drops off sharply from the middle and tapers to max radius
+                                                //.Spall does little damage to the middle, but rapidly increases damage toward max radius
+                
+                AreaEffect = Radiant, // Disabled = do not use area effect at all;  Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.  Explosive has been deprecated
+                Base = new AreaInfluence 
                 {
                     Radius = 0f, // The sphere of influence of the area effect, in metres.
-                    EffectStrength = 0f, // EWAR applies this amount per pulse/hit. Non-EWAR applies this as damage per tick per entity in the area of influence. For Radiant, 0 == use spillover from BaseDamage, otherwise use this value.
+                    EffectStrength = 0f, // EWAR applies this amount per pulse/hit. 
                 },
                 Pulse = new PulseDef // Settings for EWAR fields.
                 {
@@ -166,10 +176,12 @@ namespace Scripts
                 },
                 Detonation = new DetonateDef // Use detonation if you only want an AoE effect when the projectile hits/dies, or to spawn shrapnel. Set AreaEffect to Explosive or Radiant for explosion damage.
                 {
-                    DetonateOnEnd = false, // Enable detonation.
-                    ArmOnlyOnHit = false, // Only detonate on impact, not at end of life or when shot down.
-                    DetonationDamage = 0, // Damage to apply on detonation.
-                    DetonationRadius = 0, // Radius of explosion in metres.
+                    DetonateOnEnd = true, // Enable detonation.
+                    ArmOnlyOnHit = true, // Only detonate on impact, not at end of life or when shot down.
+                    DetonationDamage = 100, // Damage to apply on detonation.
+                    DetonationRadius = 5f, // Radius of explosion in metres.
+                    DetonationMaxDepth = 2f, // Maximum depth in meters to penetrate, perpendicular to face struck by projectile
+                    DetonationFalloff = Falloff.None, //See radiant falloff above
                     MinArmingTime = 0, // Min number of ticks before projectile will arm for detonation (will also affect shrapnel spawning).
                 },
                 EwarFields = new EwarFieldsDef
