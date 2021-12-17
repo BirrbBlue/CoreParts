@@ -126,10 +126,10 @@ namespace Scripts
             },
             AreaEffect = new AreaDamageDef
             {
-                AreaEffectRadius = 5f,  //Radius, in meters, for radiant damage to be apploed
-                AreaEffectDamage = 100f, //Base damage applied for radiant
-                AreaEffectMaxDepth = 0, //Maximum depth in meters to penetrate, perpendicular to face struck by projectile
-                AreaEffectMaxAbsorb = 35f, //DarkStar gets to describe this one
+                AreaEffectRadius = 5f,  //RADIANT ONLY:  Radius, in meters, for damage to be applied
+                AreaEffectDamage = 5f, //RADIANT ONLY:  Base damage applied per tic
+                AreaEffectMaxDepth = 0, //Maximum depth in meters to penetrate, perpendicular to face struck by projectile.  Defaults to radius if zero
+                AreaEffectMaxAbsorb = 30f, //Threshold to stop damage application on next layer.  IE, a rough maximum for overall damage done
                 RadiantFalloff = Falloff.Curve, //.None applies the same damage to all blocks in radius
                                                 //.Linear drops evenly by distance from center out to max radius
                                                 //.Curve drops off damage sharply as it approaches the max radius
@@ -139,7 +139,7 @@ namespace Scripts
                 AreaEffect = Disabled, // Disabled = do not use area effect at all;  Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.  Explosive has been deprecated
                 Base = new AreaInfluence 
                 {
-                    Radius = 5f, // The sphere of influence of the area effect, in metres.
+                    Radius = 5f, // The sphere of influence of the EWAR effect, in metres.
                     EffectStrength = 100, // EWAR applies this amount per pulse/hit. 
                 },
                 Pulse = new PulseDef // Settings for EWAR fields.
@@ -181,7 +181,7 @@ namespace Scripts
                     DetonationDamage = 100, // Damage to apply on detonation.
                     DetonationRadius = 7.5f, // Radius of explosion in metres.
                     DetonationMaxDepth = 0, // Maximum depth in meters to penetrate, perpendicular to face struck by projectile.  0 defaults to radius
-                    DetonationFalloff = Falloff.Linear, //See radiant falloff above
+                    DetonationFalloff = Falloff.Linear, //See radiant falloff description above
                     MinArmingTime = 0, // Min number of ticks before projectile will arm for detonation (will also affect shrapnel spawning).
                 },
                 EwarFields = new EwarFieldsDef
