@@ -130,7 +130,7 @@ namespace Scripts
                 AreaEffectDamage = 5f, //RADIANT ONLY:  Base damage applied per tic
                 AreaEffectMaxDepth = 0, //Maximum depth in meters to penetrate, perpendicular to face struck by projectile.  Defaults to radius if zero
                 AreaEffectMaxAbsorb = 30f, //Threshold to stop damage application on next layer.  IE, a rough maximum for overall damage done
-                RadiantFalloff = Falloff.Curve, //.None applies the same damage to all blocks in radius
+                RadiantFalloff = Falloff.Curve, //.NoFalloff applies the same damage to all blocks in radius
                                                 //.Linear drops evenly by distance from center out to max radius
                                                 //.Curve drops off damage sharply as it approaches the max radius
                                                 //.InvCurve drops off sharply from the middle and tapers to max radius
@@ -183,6 +183,7 @@ namespace Scripts
                     DetonationMaxDepth = 0, // Maximum depth in meters to penetrate, perpendicular to face struck by projectile.  0 defaults to radius
                     DetonationFalloff = Falloff.Linear, //See radiant falloff description above
                     MinArmingTime = 0, // Min number of ticks before projectile will arm for detonation (will also affect shrapnel spawning).
+                    DetonatiotMaxAbsorb = 12312312f,//Threshold to stop damage application on next layer.  IE, a rough maximum for overall damage done
                 },
                 EwarFields = new EwarFieldsDef
                 {

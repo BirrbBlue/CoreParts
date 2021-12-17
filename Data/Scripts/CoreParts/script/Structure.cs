@@ -840,7 +840,7 @@ namespace Scripts
                     public enum Falloff
                     {
                         Legacy,
-                        None,
+                        NoFalloff,
                         Linear,
                         Curve,
                         Spall,
@@ -919,6 +919,7 @@ namespace Scripts
                         [ProtoMember(5)] internal int MinArmingTime;
                         [ProtoMember(6)] internal Falloff DetonationFalloff;
                         [ProtoMember(7)] internal float DetonationMaxDepth;
+                        [ProtoMember(8)] internal float DetonatiotMaxAbsorb;
                     }
 
                     [ProtoContract]
