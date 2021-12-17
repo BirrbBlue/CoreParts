@@ -837,6 +837,14 @@ namespace Scripts
                         PullField,
                         TractorField,
                     }
+                    public enum Falloff
+                    {
+                        Legacy,
+                        None,
+                        Linear,
+                        Curve,
+                        Spall,
+                    }
 
                     [ProtoMember(1)] internal double AreaEffectRadius;
                     [ProtoMember(2)] internal float AreaEffectDamage;
@@ -846,6 +854,9 @@ namespace Scripts
                     [ProtoMember(6)] internal ExplosionDef Explosions;
                     [ProtoMember(7)] internal EwarFieldsDef EwarFields;
                     [ProtoMember(8)] internal AreaInfluence Base;
+                    [ProtoMember(9)] internal Falloff RadiantFalloff;
+                    [ProtoMember(10)] internal float AreaEffectMaxDepth;
+                    [ProtoMember(11)] internal float AreaEffectMaxAbsorb;
 
                     [ProtoContract]
                     public struct AreaInfluence
@@ -906,6 +917,8 @@ namespace Scripts
                         [ProtoMember(3)] internal float DetonationRadius;
                         [ProtoMember(4)] internal float DetonationDamage;
                         [ProtoMember(5)] internal int MinArmingTime;
+                        [ProtoMember(6)] internal Falloff DetonationFalloff;
+                        [ProtoMember(7)] internal float DetonationMaxDepth;
                     }
 
                     [ProtoContract]

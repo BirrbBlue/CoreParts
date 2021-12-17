@@ -27,13 +27,13 @@ namespace Scripts
             AmmoRound = "AmmoType1", // Name of ammo in terminal, should be different for each ammo type used by the same weapon.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
             EnergyCost = 0.1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 500f, // Direct damage; one steel plate is worth 100.
+            BaseDamage = 111f, // Direct damage; one steel plate is worth 100.
             Mass = 0f, // In kilograms; how much force the impact will apply to the target.
             Health = 1, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             BackKickForce = 0f, // Recoil.
             DecayPerShot = 0f, // Damage to the firing weapon itself.
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            EnergyMagazineSize = 0, // For energy weapons, how many shots to fire before reloading.
+            EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
             IgnoreWater = false, // Whether the projectile should be able to penetrate water when using WaterMod.
 
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
@@ -126,11 +126,21 @@ namespace Scripts
             },
             AreaEffect = new AreaDamageDef
             {
-                AreaEffect = Disabled, // Disabled = do not use area effect at all; Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.
-                Base = new AreaInfluence // Detonation can use Explosive or Radiant.
+                AreaEffectRadius = 5f,  //RADIANT ONLY:  Radius, in meters, for damage to be applied
+                AreaEffectDamage = 5f, //RADIANT ONLY:  Base damage applied per tic
+                AreaEffectMaxDepth = 0, //Maximum depth in meters to penetrate, perpendicular to face struck by projectile.  Defaults to radius if zero
+                AreaEffectMaxAbsorb = 30f, //Threshold to stop damage application on next layer.  IE, a rough maximum for overall damage done
+                RadiantFalloff = Falloff.Curve, //.None applies the same damage to all blocks in radius
+                                                //.Linear drops evenly by distance from center out to max radius
+                                                //.Curve drops off damage sharply as it approaches the max radius
+                                                //.InvCurve drops off sharply from the middle and tapers to max radius
+                                                //.Spall does little damage to the middle, but rapidly increases damage toward max radius
+                
+                AreaEffect = Disabled, // Disabled = do not use area effect at all;  Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.  Explosive has been deprecated
+                Base = new AreaInfluence 
                 {
-                    Radius = 0f, // The sphere of influence of the area effect, in metres.
-                    EffectStrength = 0f, // EWAR applies this amount per pulse/hit. Non-EWAR applies this as damage per tick per entity in the area of influence. For Radiant, 0 == use spillover from BaseDamage, otherwise use this value.
+                    Radius = 5f, // The sphere of influence of the EWAR effect, in metres.
+                    EffectStrength = 100, // EWAR applies this amount per pulse/hit. 
                 },
                 Pulse = new PulseDef // Settings for EWAR fields.
                 {
@@ -166,10 +176,12 @@ namespace Scripts
                 },
                 Detonation = new DetonateDef // Use detonation if you only want an AoE effect when the projectile hits/dies, or to spawn shrapnel. Set AreaEffect to Explosive or Radiant for explosion damage.
                 {
-                    DetonateOnEnd = false, // Enable detonation.
-                    ArmOnlyOnHit = false, // Only detonate on impact, not at end of life or when shot down.
-                    DetonationDamage = 0, // Damage to apply on detonation.
-                    DetonationRadius = 0, // Radius of explosion in metres.
+                    DetonateOnEnd = true, // Enable detonation.
+                    ArmOnlyOnHit = true, // Only detonate on impact, not at end of life or when shot down.
+                    DetonationDamage = 100, // Damage to apply on detonation.
+                    DetonationRadius = 7.5f, // Radius of explosion in metres.
+                    DetonationMaxDepth = 0, // Maximum depth in meters to penetrate, perpendicular to face struck by projectile.  0 defaults to radius
+                    DetonationFalloff = Falloff.Linear, //See radiant falloff description above
                     MinArmingTime = 0, // Min number of ticks before projectile will arm for detonation (will also affect shrapnel spawning).
                 },
                 EwarFields = new EwarFieldsDef
@@ -206,8 +218,8 @@ namespace Scripts
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 0f,
-                DesiredSpeed = 500, // voxel phasing if you go above 5100
-                MaxTrajectory = 9500f,
+                DesiredSpeed = 10, // voxel phasing if you go above 5100
+                MaxTrajectory = 100f,
                 FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
