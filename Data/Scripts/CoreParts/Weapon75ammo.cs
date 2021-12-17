@@ -33,7 +33,7 @@ namespace Scripts
             BackKickForce = 0f, // Recoil.
             DecayPerShot = 0f, // Damage to the firing weapon itself.
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            EnergyMagazineSize = 0, // For energy weapons, how many shots to fire before reloading.
+            EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
             IgnoreWater = false, // Whether the projectile should be able to penetrate water when using WaterMod.
 
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
@@ -126,9 +126,9 @@ namespace Scripts
             },
             AreaEffect = new AreaDamageDef
             {
-                AreaEffectRadius = 5,  //Radius, in meters, for radiant damage to be apploed
-                AreaEffectDamage = 20f, //Base damage applied for radiant
-                AreaEffectMaxDepth = 1f, //Maximum depth in meters to penetrate, perpendicular to face struck by projectile
+                AreaEffectRadius = 5f,  //Radius, in meters, for radiant damage to be apploed
+                AreaEffectDamage = 100f, //Base damage applied for radiant
+                AreaEffectMaxDepth = 0, //Maximum depth in meters to penetrate, perpendicular to face struck by projectile
                 AreaEffectMaxAbsorb = 35f, //DarkStar gets to describe this one
                 RadiantFalloff = Falloff.Curve, //.None applies the same damage to all blocks in radius
                                                 //.Linear drops evenly by distance from center out to max radius
@@ -139,8 +139,8 @@ namespace Scripts
                 AreaEffect = Disabled, // Disabled = do not use area effect at all;  Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.  Explosive has been deprecated
                 Base = new AreaInfluence 
                 {
-                    Radius = 0f, // The sphere of influence of the area effect, in metres.
-                    EffectStrength = 0f, // EWAR applies this amount per pulse/hit. 
+                    Radius = 5f, // The sphere of influence of the area effect, in metres.
+                    EffectStrength = 100, // EWAR applies this amount per pulse/hit. 
                 },
                 Pulse = new PulseDef // Settings for EWAR fields.
                 {
@@ -179,9 +179,9 @@ namespace Scripts
                     DetonateOnEnd = true, // Enable detonation.
                     ArmOnlyOnHit = true, // Only detonate on impact, not at end of life or when shot down.
                     DetonationDamage = 100, // Damage to apply on detonation.
-                    DetonationRadius = 5f, // Radius of explosion in metres.
-                    DetonationMaxDepth = 2f, // Maximum depth in meters to penetrate, perpendicular to face struck by projectile
-                    DetonationFalloff = Falloff.None, //See radiant falloff above
+                    DetonationRadius = 7.5f, // Radius of explosion in metres.
+                    DetonationMaxDepth = 0, // Maximum depth in meters to penetrate, perpendicular to face struck by projectile.  0 defaults to radius
+                    DetonationFalloff = Falloff.Linear, //See radiant falloff above
                     MinArmingTime = 0, // Min number of ticks before projectile will arm for detonation (will also affect shrapnel spawning).
                 },
                 EwarFields = new EwarFieldsDef
