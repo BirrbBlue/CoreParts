@@ -838,13 +838,16 @@ namespace Scripts
                         PullField,
                         TractorField,
                     }
+
                     public enum Falloff
                     {
                         Legacy,
                         NoFalloff,
                         Linear,
                         Curve,
+                        InvCurve,
                         Spall,
+                        Pooled,
                     }
 
                     [ProtoMember(1)] internal double AreaEffectRadius;
