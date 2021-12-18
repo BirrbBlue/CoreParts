@@ -53,6 +53,7 @@ namespace Scripts
                 Degrees = 15, // Cone in which to randomise direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 RandomizeDir = false, // Randomize between forward and backward directions.
+                DropVelocity = false, // fragments will not inherit velocity from parent.
             },
             Pattern = new PatternDef
             {
@@ -135,7 +136,8 @@ namespace Scripts
                                                 //.Curve drops off damage sharply as it approaches the max radius
                                                 //.InvCurve drops off sharply from the middle and tapers to max radius
                                                 //.Spall does little damage to the middle, but rapidly increases damage toward max radius
-                
+                                                //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+
                 AreaEffect = Disabled, // Disabled = do not use area effect at all;  Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField, PushField, PullField, TractorField.  Explosive has been deprecated
                 Base = new AreaInfluence 
                 {
