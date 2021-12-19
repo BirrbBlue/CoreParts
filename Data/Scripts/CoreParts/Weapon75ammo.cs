@@ -140,7 +140,7 @@ namespace Scripts
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Spall does little damage to the middle, but rapidly increases damage toward max radius
+                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                 },
                 EndOfLife = new EndOfLifeDef
@@ -150,11 +150,11 @@ namespace Scripts
                     Damage = 5f,
                     Depth = 1f,
                     MaxAbsorb = 0f,
-                    Falloff = Curve, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Squeeze, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Spall does little damage to the middle, but rapidly increases damage toward max radius
+                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     ArmOnlyOnHit = false,
                     MinArmingTime = 100,
