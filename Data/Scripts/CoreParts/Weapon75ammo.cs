@@ -59,7 +59,7 @@ namespace Scripts
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 RandomizeDir = false, // Randomize between forward and backward directions.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
-                Offset = Vector(x: 0, y: 0, z: 0), // Offsets the fragment spawn by this amount.
+                Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
             },
             Pattern = new PatternDef
             {

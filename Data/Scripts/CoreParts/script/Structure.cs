@@ -792,7 +792,7 @@ namespace Scripts
                     [ProtoMember(6)] internal bool Reverse;
                     [ProtoMember(7)] internal bool RandomizeDir;
                     [ProtoMember(8)] internal bool DropVelocity;
-                    [ProtoMember(9)] internal Vector3D Offset;
+                    [ProtoMember(9)] internal float Offset;
                 }
 
                 [ProtoContract]
