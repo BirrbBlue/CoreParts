@@ -17,26 +17,18 @@ namespace Scripts {
             {
                 MountPoints = new[] {
                     new MountPointDef {
-                        SubtypeId = "PDCTurretLB",
+                        SubtypeId = "PDCTurretLB", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns.
-                        MuzzlePartId = "Boomsticks", // The subpart where your muzzle empties are located.
-                        AzimuthPartId = "None",
-                        ElevationPartId = "None",
+                        MuzzlePartId = "Boomsticks", // The subpart where your muzzle empties are located. This is often the elevation subpart.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up
                         DurabilityMod = 0.25f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    new MountPointDef {
-                        SubtypeId = "PDCTurretSB",
-                        SpinPartId = "Boomsticks",
-                        MuzzlePartId = "Boomsticks",
-                        AzimuthPartId = "None",
-                        ElevationPartId = "None",
-                        DurabilityMod = 0.05f,
-                        IconName = "TestIcon.dds",
-                    },
-                },
+                    
+                 },
                 Muzzles = new[] {
-                    "muzzle_barrel_001",
+                    "muzzle_barrel_001", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
                     "muzzle_barrel_002",
                     "muzzle_barrel_003",
                     "muzzle_barrel_004",
@@ -129,7 +121,7 @@ namespace Scripts {
                 },
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 60, // Set this to 3600 for beam weapons.
+                    RateOfFire = 60, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
                     SkipBarrels = 0, // Number of muzzles to skip after each fire event.
@@ -155,7 +147,7 @@ namespace Scripts {
                     PreFiringSound = "", // Audio for warmup effect.
                     FiringSound = "WepShipGatlingShot", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
-                    ReloadSound = "",
+                    ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
                     NoAmmoSound = "",
                     HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
                     BarrelRotationSound = "WepShipGatlingRotation",
@@ -195,7 +187,8 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                AmmoType1, AmmoType2, // Must list all primary, shrapnel, and pattern ammos.
+                AmmoType1, 
+                AmmoType2, // Must list all primary, shrapnel, and pattern ammos.
             },
             //Animations = Weapon75_Animation,
             //Upgrades = UpgradeModules,
