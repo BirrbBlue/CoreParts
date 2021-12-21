@@ -169,6 +169,7 @@ namespace Scripts
                     ParticleScale = 1,
                     CustomParticle = "particleName", // Particle SubtypeID, from your Particle SBC
                     CustomSound = "soundName", // SubtypeID from your Audio SBC, not a filename
+                    Shape = Round, // Round or Diamond
                 }, 
             },
             Ewar = new EwarDef
