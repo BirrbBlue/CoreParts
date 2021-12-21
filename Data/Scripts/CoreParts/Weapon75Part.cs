@@ -160,13 +160,10 @@ namespace Scripts {
                         Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
                         Offset = Vector(x: 0, y: -1, z: 0), // Offsets the effect from the muzzle empty.
-
                         Extras = new ParticleOptionDef
                         {
                             Loop = false, // Set this to the same as in the particle sbc!
                             Restart = false, // Whether to end a looping effect instantly when firing stops.
-                            MaxDistance = 50, // Max distance at which this effect should be visible. NOTE: This will use whichever MaxDistance value is higher across Effect1 and Effect2!
-                            MaxDuration = 5, // Deprecated.
                             Scale = 1f, // Scale of effect.
                         },
                     },
@@ -175,12 +172,10 @@ namespace Scripts {
                         Name = "",
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
-
                         Extras = new ParticleOptionDef
                         {
+                            Loop = false, // Set this to the same as in the particle sbc!
                             Restart = false,
-                            MaxDistance = 50,
-                            MaxDuration = 0,
                             Scale = 1f,
                         },
                     },
