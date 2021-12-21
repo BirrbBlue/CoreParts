@@ -3,6 +3,8 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
@@ -37,6 +39,7 @@ namespace Scripts
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
             IgnoreWater = false, // Whether the projectile should be able to penetrate water when using WaterMod.
+            IgnoreVoxels = false, // Whether the projectile should be able to penetrate voxels.
 
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
@@ -56,6 +59,7 @@ namespace Scripts
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 RandomizeDir = false, // Randomize between forward and backward directions.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
+                Offset = Vector(x: 0, y: 0, z: 0), // Offsets the fragment spawn by this amount.
             },
             Pattern = new PatternDef
             {
@@ -111,7 +115,7 @@ namespace Scripts
                 },
                 Custom = new CustomScalesDef
                 {
-                    IgnoreAllOthers = false, // Pass through all blocks not listed below without damaging them.
+                    SkipOthers = NoSkip, // Controls how projectile interacts with other blocks in relation to those defined here, NoSkip, Exclusive, Inclusive.
                     Types = new[] // List of blocks to apply custom damage multipliers to.
                     {
                         new CustomBlocksDef
