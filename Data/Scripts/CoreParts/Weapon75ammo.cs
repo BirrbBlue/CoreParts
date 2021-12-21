@@ -12,6 +12,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
@@ -146,6 +147,7 @@ namespace Scripts
                     //.InvCurve drops off sharply from the middle and tapers to max radius
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+                    Shape = Diamond, // Round or Diamond
                 },
                 EndOfLife = new EndOfLifeDef
                 {
@@ -167,6 +169,7 @@ namespace Scripts
                     ParticleScale = 1,
                     CustomParticle = "particleName",
                     CustomSound = "soundName",
+                    Shape = Round, // Round or Diamond
                 },
             },
             Ewar = new EwarDef

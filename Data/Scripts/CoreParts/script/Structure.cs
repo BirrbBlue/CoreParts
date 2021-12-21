@@ -843,6 +843,11 @@ namespace Scripts
                         Squeeze,
                         Pooled,
                     }
+                    public enum AoeShape
+                    {
+                        Round,
+                        Diamond,
+                    }
 
                     [ProtoMember(1)] internal ByBlockHitDef ByBlockHit;
                     [ProtoMember(2)] internal EndOfLifeDef EndOfLife;
@@ -856,6 +861,7 @@ namespace Scripts
                         [ProtoMember(4)] internal float Depth;
                         [ProtoMember(5)] internal float MaxAbsorb;
                         [ProtoMember(6)] internal Falloff Falloff;
+                        [ProtoMember(7)] internal AoeShape Shape;
                     }
 
                     [ProtoContract]
@@ -874,6 +880,7 @@ namespace Scripts
                         [ProtoMember(11)] internal float ParticleScale;
                         [ProtoMember(12)] internal string CustomParticle;
                         [ProtoMember(13)] internal string CustomSound;
+                        [ProtoMember(14)] internal AoeShape Shape;
                     }
                 }
 
