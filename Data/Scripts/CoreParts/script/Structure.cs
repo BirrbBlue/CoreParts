@@ -642,7 +642,7 @@ namespace Scripts
                             Default,
                             Heal,
                             Bypass,
-                            Emp,
+                            EmpRetired,
                         }
 
                         [ProtoMember(1)] internal float Modifier;
