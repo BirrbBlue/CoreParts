@@ -174,11 +174,11 @@ namespace Scripts
             },
             Ewar = new EwarDef
             {
-                Enable = true, // Enables the EWAR , Electronic-Warfare System
+                Enable = false, // Enables the EWAR , Electronic-Warfare System
                 Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Effect, // Effect , Field
-                Strength = 10000f,
-                Radius = 100f, // Meters
+                Strength = 100f,
+                Radius = 5f, // Meters
                 Duration = 100, // In Ticks
                 StackDuration = true, // Combined Durations
                 Depletable = true,
@@ -538,7 +538,7 @@ namespace Scripts
             },
             Ewar = new EwarDef
             {
-                Enable = true, // Enables the EWAR , Electronic-Warfare System
+                Enable = false, // Enables the EWAR , Electronic-Warfare System
                 Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Effect, // Effect , Field
                 Strength = 10000f,
