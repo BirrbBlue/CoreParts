@@ -61,7 +61,7 @@ namespace Scripts
                 RandomizeDir = false, // Randomize between forward and backward directions.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
-                Radial = false, // Determines if Degrees are in direction of travel, or radial/perpendicular to travel direction
+                Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
             },
             Pattern = new PatternDef
             {
