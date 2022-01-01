@@ -61,6 +61,7 @@ namespace Scripts
                 RandomizeDir = false, // Randomize between forward and backward directions.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
+                Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
             },
             Pattern = new PatternDef
             {
@@ -174,7 +175,7 @@ namespace Scripts
             },
             Ewar = new EwarDef
             {
-                Enable = false, // Enables the EWAR , Electronic-Warfare System
+                Enable = false, // Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!
                 Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Effect, // Effect , Field
                 Strength = 100f,
