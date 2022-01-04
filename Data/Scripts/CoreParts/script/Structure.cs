@@ -854,6 +854,7 @@ namespace Scripts
                         InvCurve,
                         Squeeze,
                         Pooled,
+                        Exponential,
                     }
                     public enum AoeShape
                     {
