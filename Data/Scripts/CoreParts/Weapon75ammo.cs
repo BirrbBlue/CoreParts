@@ -185,7 +185,7 @@ namespace Scripts
             },
             Ewar = new EwarDef
             {
-                Enable = false, // Enables the EWAR , Electronic-Warfare System
+                Enable = false, // Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!
                 Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Effect, // Effect , Field
                 Strength = 100f,
