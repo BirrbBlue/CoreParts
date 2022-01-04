@@ -786,7 +786,7 @@ namespace Scripts
                 {
                     [ProtoMember(1)] internal string AmmoRound;
                     [ProtoMember(2)] internal int Fragments;
-                    [ProtoMember(3)] internal float ForwardDegrees;
+                    [ProtoMember(3)] internal float Radial;
                     [ProtoMember(4)] internal float BackwardDegrees;
                     [ProtoMember(5)] internal float Degrees;
                     [ProtoMember(6)] internal bool Reverse;
