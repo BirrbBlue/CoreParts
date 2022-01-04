@@ -6,6 +6,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
@@ -54,13 +55,22 @@ namespace Scripts
             },
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
-                AmmoRound = "", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "MagicFragment", // AmmoRound field of the ammo to spawn.
                 Fragments = 100, // Number of projectiles to spawn.
-                Degrees = 15, // Cone in which to randomise direction of spawned projectiles.
+                Degrees = 15, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
-                RandomizeDir = false, // Randomize between forward and backward directions.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
+                MaxChildren = 0,
+                IgnoreArming = true,
+                TimedSpawns = new TimedSpawnDef
+                {
+                    Enable = true,
+                    Interval = 0,
+                    StartTime = 0,
+                    MaxSpawns = 1,
+                    MinProximity = 1000,
+                },
             },
             Pattern = new PatternDef
             {
@@ -424,7 +434,6 @@ namespace Scripts
                 Fragments = 100, // Number of projectiles to spawn.
                 Degrees = 15, // Cone in which to randomise direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
-                RandomizeDir = false, // Randomize between forward and backward directions.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
             },
