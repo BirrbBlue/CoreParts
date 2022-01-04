@@ -62,15 +62,15 @@ namespace Scripts
                 DropVelocity = false, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
                 Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
-                MaxChildren = 0,
-                IgnoreArming = true,
-                TimedSpawns = new TimedSpawnDef
+                MaxChildren = 0, // number of maximum steps/stages for recursive fragments that spawn themselves as children
+                IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
+                TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
                 {
-                    Enable = true,
-                    Interval = 0,
-                    StartTime = 0,
-                    MaxSpawns = 1,
-                    MinProximity = 1000,
+                    Enable = true, // Enables TimedSpawns mechanism
+                    Interval = 0, // Time between spawning fragments, in ticks
+                    StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
+                    MaxSpawns = 1, // Max number of fragment children to spawn
+                    MinProximity = 1000, // Starting distance from target bounding sphere to start spawning fragments.  No spawning outside this distance
                 },
             },
             Pattern = new PatternDef
