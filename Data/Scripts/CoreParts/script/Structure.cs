@@ -805,6 +805,7 @@ namespace Scripts
                         [ProtoMember(4)] internal int MaxSpawns;
                         [ProtoMember(5)] internal double Proximity;
                         [ProtoMember(6)] internal bool ParentDies;
+                        [ProtoMember(7)] internal bool PointAtTarget;
                     }
                 }
 

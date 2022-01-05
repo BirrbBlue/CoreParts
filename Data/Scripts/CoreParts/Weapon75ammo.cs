@@ -72,6 +72,7 @@ namespace Scripts
                     MaxSpawns = 1, // Max number of fragment children to spawn
                     Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = true, // Parent dies once after it spawns its last child.
+                    PointAtTarget = true, // Start fragment direction pointing at Target
                 },
             },
             Pattern = new PatternDef
