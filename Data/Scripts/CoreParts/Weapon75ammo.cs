@@ -42,6 +42,7 @@ namespace Scripts
             EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
             IgnoreWater = false, // Whether the projectile should be able to penetrate water when using WaterMod.
             IgnoreVoxels = false, // Whether the projectile should be able to penetrate voxels.
+            Synchronize = false, // For future use
 
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
@@ -64,7 +65,7 @@ namespace Scripts
                 Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
                 MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
                 IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
-                Synchronize = false, // For future use
+
                 TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
                 {
                     Enable = true, // Enables TimedSpawns mechanism

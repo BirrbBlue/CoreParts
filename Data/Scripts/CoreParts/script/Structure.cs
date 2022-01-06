@@ -562,6 +562,7 @@ namespace Scripts
                 [ProtoMember(24)] internal AreaOfDamageDef AreaOfDamage;
                 [ProtoMember(25)] internal EwarDef Ewar;
                 [ProtoMember(26)] internal bool IgnoreVoxels;
+                [ProtoMember(27)] internal bool Synchronize;
 
                 [ProtoContract]
                 public struct DamageScaleDef
@@ -795,7 +796,6 @@ namespace Scripts
                     [ProtoMember(9)] internal float Offset;
                     [ProtoMember(10)] internal int MaxChildren;
                     [ProtoMember(11)] internal TimedSpawnDef TimedSpawns;
-                    [ProtoMember(12)] internal bool Synchronize;
 
                     [ProtoContract]
                     public struct TimedSpawnDef
