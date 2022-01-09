@@ -208,14 +208,14 @@ namespace Scripts
                 EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
                 Emp : Targets & Shutdown any Block capable of being powered
                 Offense : Targets & Shutdowns Weaponry
-                Nav : Targets & Shutdown Gyros, Thrusters, or Locks them down
+                Nav : Targets & Shutdown Gyros or Locks them down
                 Dot : Deals Damage to Blocks in radius
                 AntiSmart : Effects & Scrambles the Targeting List of Affected Missiles
                 JumpNull : Shutdown & Stops any Active Jumps, or JumpDrive Units in radius
                 Tractor : Affects target with Physics
                 Pull : Affects target with Physics
                 Push : Affects target with Physics
-                Anchor : Affects target with Physics
+                Anchor : Targets & Shutdowns Thrusters
                 
                 */
                 Force = new PushPullDef
