@@ -159,8 +159,8 @@ namespace Scripts
                     Enable = true,
                     Radius = 5f, // Meters
                     Damage = 5f,
-                    Depth = 1f, // Meters
-                    MaxAbsorb = 0f,
+                    Depth = 1f, // Max depth of AOE effect, in meters. 0=disabled, and AOE effect will reach to a depth of the radius value
+                    MaxAbsorb = 0f, // Soft cutoff for damage, except for pooled falloff.  If pooled falloff, limits max damage per block.
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
@@ -168,15 +168,15 @@ namespace Scripts
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     //.Exponential drops off exponentially.  Does not scale to max radius
-                    Shape = Diamond, // Round or Diamond
+                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 5f, // Meters
+                    Radius = 5f, // Radius of AOE effect, in meters.
                     Damage = 5f,
-                    Depth = 1f,
-                    MaxAbsorb = 0f,
+                    Depth = 1f, // Max depth of AOE effect, in meters. 0=disabled, and AOE effect will reach to a depth of the radius value
+                    MaxAbsorb = 0f, // Soft cutoff for damage, except for pooled falloff.  If pooled falloff, limits max damage per block.
                     Falloff = Squeeze, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
@@ -191,7 +191,7 @@ namespace Scripts
                     ParticleScale = 1,
                     CustomParticle = "particleName", // Particle SubtypeID, from your Particle SBC
                     CustomSound = "soundName", // SubtypeID from your Audio SBC, not a filename
-                    Shape = Round, // Round or Diamond
+                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 }, 
             },
             Ewar = new EwarDef
@@ -234,7 +234,7 @@ namespace Scripts
                     Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
                     PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
                     GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
+                    HideModel = false, // Hide the default bubble, or other model if specified.
                     ShowParticle = true, // Show Block damage effect.
                     TriggerRange = 250f, //range at which fields are triggered
                     Particle = new ParticleDef // Particle effect to generate at the field's position.
