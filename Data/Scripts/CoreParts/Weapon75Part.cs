@@ -18,10 +18,10 @@ namespace Scripts {
                 MountPoints = new[] {
                     new MountPointDef {
                         SubtypeId = "PDCTurretLB", // Block Subtypeid. Your Cubeblocks contain this information
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns.
-                        MuzzlePartId = "Boomsticks", // The subpart where your muzzle empties are located. This is often the elevation subpart.
-                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways
-                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "Boomsticks", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
                         DurabilityMod = 0.25f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
