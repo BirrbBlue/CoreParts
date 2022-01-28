@@ -18,10 +18,10 @@ namespace Scripts {
                 MountPoints = new[] {
                     new MountPointDef {
                         SubtypeId = "PDCTurretLB", // Block Subtypeid. Your Cubeblocks contain this information
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns.
-                        MuzzlePartId = "Boomsticks", // The subpart where your muzzle empties are located. This is often the elevation subpart.
-                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways
-                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "Boomsticks", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
                         DurabilityMod = 0.25f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
@@ -152,7 +152,7 @@ namespace Scripts {
                     HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
                     BarrelRotationSound = "WepShipGatlingRotation",
                     FireSoundEndDelay = 120, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
-                    FireSoundNoBurst = true,
+                    FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
                 },
                 Graphics = new HardPointParticleDef
                 {
@@ -160,7 +160,7 @@ namespace Scripts {
                     {
                         Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
-                        Offset = Vector(x: 0, y: -1, z: 0), // Offsets the effect from the muzzle empty.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
                         Extras = new ParticleOptionDef
                         {
                             Loop = false, // Set this to the same as in the particle sbc!
