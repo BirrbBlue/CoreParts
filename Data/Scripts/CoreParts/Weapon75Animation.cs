@@ -10,7 +10,7 @@ namespace Scripts
     {
         private AnimationDef Weapon75_Animation => new AnimationDef
         {
-			
+
 
             //Emissives = new []
             //{
@@ -38,7 +38,7 @@ namespace Scripts
             //        {
             //            Color(red:0, green: .051f, blue:.051f, alpha: .05f),//will transitions form one color to the next if more than one
             //            Color(red:0, green: 0, blue: 0, alpha: 1),//will transitions form one color to the next if more than one
-                        
+
 
             //        },
             //        IntensityFrom:1, //starting intensity, can be 0.0-1.0 or 1.0-0.0, setting both from and to, to the same value will stay at that value
@@ -59,7 +59,7 @@ namespace Scripts
             //        {
             //            Color(red:0, green: .051f, blue:.051f, alpha: .05f),//will transitions form one color to the next if more than one
             //            Color(red:0, green: 1, blue:1, alpha: 1),
-                        
+
             //        }, 
             //        IntensityFrom:0, //starting intensity, can be 0.0-1.0 or 1.0-0.0, setting both from and to, to the same value will stay at that value
             //        IntensityTo:1, 
@@ -75,7 +75,7 @@ namespace Scripts
             //        Colors: new []
             //        {
 
-                        
+
             //            Color(red:0, green: 250, blue: 250, alpha: 1),
 
             //        },
@@ -106,6 +106,35 @@ namespace Scripts
             //        }),
 
             //},
+
+            //EventParticles = new Dictionary<PartAnimationSetDef.EventTriggers, EventParticle[]>
+            //{
+            //    [PreFire] = new[]{ //This particle fires in the Prefire state, during the 10 second windup the gauss cannon has.
+            //                       //Valid options include Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire.
+            //           new EventParticle
+            //           {
+            //               EmptyNames = Names("muzzle_projectile_1"), //If you want an effect on your own dummy
+            //               MuzzleNames = Names("muzzle_projectile_1"), //If you want an effect on the muzzle
+            //               StartDelay = 0, //ticks 60 = 1 second, delay until particle starts.
+            //               LoopDelay = 0, //ticks 60 = 1 second
+            //               ForceStop = false,
+            //               Particle = new ParticleDef
+            //               {
+            //                   Name = "ShipWelderArc", //Particle subtypeID
+            //                   Color = Color(red: 25, green: 25, blue: 25, alpha: 1), //This is redundant as recolouring is no longer supported.
+            //                   Extras = new ParticleOptionDef //do your particle colours in your particle file instead.
+            //                   {
+            //                       Loop = true, //Should match your particle definition.
+            //                       Restart = false,
+            //                       MaxDistance = 1000, //meters
+            //                       MaxDuration = 120, //ticks 60 = 1 second
+            //                       Scale = 1, //How chunky the particle is.
+            //                   }
+            //               }
+            //           },
+            //       },
+            //},
+
             AnimationSets = new[]
             {
 				#region Muzzles Animations
