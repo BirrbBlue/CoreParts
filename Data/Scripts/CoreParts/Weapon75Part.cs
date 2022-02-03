@@ -141,6 +141,8 @@ namespace Scripts {
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
                     SpinFree = true, // Spin barrel while not firing.
                     StayCharged = false, // Will start recharging whenever power cap is not full.
+                    MaxActiveProjectiles = 0, // Maximum number of projectiles in flight
+                    MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
                 },
                 Audio = new HardPointAudioDef
                 {
