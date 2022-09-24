@@ -14,6 +14,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DeformDef.DeformTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
@@ -135,6 +136,11 @@ namespace Scripts
                     AreaEffect = Energy,
                     Detonation = Energy,
                     Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
+                },
+                Deform = new DeformDef
+                {
+                    DeformType = HitBlock,
+                    DeformDelay = 30,
                 },
                 Custom = new CustomScalesDef
                 {
@@ -504,6 +510,11 @@ namespace Scripts
                     AreaEffect = Energy,
                     Detonation = Energy,
                     Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
+                },
+                Deform = new DeformDef
+                {
+                    DeformType = HitBlock,
+                    DeformDelay = 30,
                 },
                 Custom = new CustomScalesDef
                 {

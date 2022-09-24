@@ -585,6 +585,7 @@ namespace Scripts
                     [ProtoMember(10)] internal double HealthHitModifier;
                     [ProtoMember(11)] internal double VoxelHitModifier;
                     [ProtoMember(12)] internal DamageTypes DamageType;
+                    [ProtoMember(13)] internal DeformDef Deform;
 
                     [ProtoContract]
                     public struct FallOffDef
@@ -654,6 +655,20 @@ namespace Scripts
                         [ProtoMember(1)] internal float Modifier;
                         [ProtoMember(2)] internal ShieldType Type;
                         [ProtoMember(3)] internal float BypassModifier;
+                    }
+
+                    [ProtoContract]
+                    public struct DeformDef
+                    {
+                        internal enum DeformTypes
+                        {
+                            HitBlock,
+                            AllDamagedBlocks,
+                            NoDeform,
+                        }
+
+                        [ProtoMember(1)] internal DeformTypes DeformType;
+                        [ProtoMember(2)] internal int DeformDelay;
                     }
                 }
 
