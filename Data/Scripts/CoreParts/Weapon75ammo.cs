@@ -25,6 +25,8 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.PushPullDef.Forc
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.DecalDef;
+
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
 
 namespace Scripts
@@ -309,6 +311,23 @@ namespace Scripts
                 ModelName = "", // Model Path goes here.  "\\Models\\Ammo\\Starcore_Arrow_Missile_Large"
                 VisualProbability = 1f, // %
                 ShieldHitDraw = false,
+                Decals = new DecalDef
+                {
+                    MaxAge = 3600,
+                    Map = new[]
+                    {
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Metal",
+                            DecalMaterial = "GunBullet",
+                        },
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Glass",
+                            DecalMaterial = "GunBullet",
+                        },
+                    },
+                },
                 Particles = new AmmoParticleDef
                 {
                     Ammo = new ParticleDef
@@ -679,6 +698,23 @@ namespace Scripts
                 ModelName = "", // Model Path goes here.  "\\Models\\Ammo\\Starcore_Arrow_Missile_Large"
                 VisualProbability = 1f, // %
                 ShieldHitDraw = false,
+                Decals = new DecalDef
+                {
+                    MaxAge = 3600,
+                    Map = new[]
+                    {
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Metal",
+                            DecalMaterial = "GunBullet",
+                        },
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Glass",
+                            DecalMaterial = "GunBullet",
+                        },
+                    },
+                },
                 Particles = new AmmoParticleDef
                 {
                     Ammo = new ParticleDef
