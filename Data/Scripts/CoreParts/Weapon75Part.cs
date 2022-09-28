@@ -168,6 +168,8 @@ namespace Scripts {
                         {
                             Loop = false, // Set this to the same as in the particle sbc!
                             Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 800,
+                            MaxDuration = 0,
                             Scale = 1f, // Scale of effect.
                         },
                     },
@@ -180,6 +182,8 @@ namespace Scripts {
                         {
                             Loop = false, // Set this to the same as in the particle sbc!
                             Restart = false,
+                            MaxDistance = 800,
+                            MaxDuration = 0,
                             Scale = 1f,
                         },
                     },
