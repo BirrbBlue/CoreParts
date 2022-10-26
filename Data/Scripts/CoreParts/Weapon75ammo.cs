@@ -50,7 +50,7 @@ namespace Scripts
             EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
             IgnoreWater = false, // Whether the projectile should be able to penetrate water when using WaterMod.
             IgnoreVoxels = false, // Whether the projectile should be able to penetrate voxels.
-            Synchronize = false, // For future use
+            Synchronize = false, // Be careful, do not use on high fire rate weapons.  Only works on drones and Smart projectiles.  Will only work on chained fragments with a frag count of 1, will no longer sync once frag chain > 1.
             HeatModifier = -1f, // Allows this ammo to modify the amount of heat the weapon produces per shot.
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
