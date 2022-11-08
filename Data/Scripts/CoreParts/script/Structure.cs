@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ProtoBuf;
 using VRageMath;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachesDef;
 
 namespace Scripts
 {
@@ -1178,6 +1179,7 @@ namespace Scripts
                     [ProtoMember(12)] internal MinesDef Mines;
                     [ProtoMember(13)] internal float GravityMultiplier;
                     [ProtoMember(14)] internal uint MaxTrajectoryTime;
+                    [ProtoMember(15)] internal ApproachDef[] Approaches;
 
                     [ProtoContract]
                     public struct SmartsDef
@@ -1195,6 +1197,54 @@ namespace Scripts
                         [ProtoMember(11)] internal float OffsetRatio;
                         [ProtoMember(12)] internal int OffsetTime;
                         [ProtoMember(13)] internal bool CheckFutureIntersection;
+                    }
+
+                    [ProtoContract]
+                    public struct ApproachDef
+                    {
+                        public enum StartFailure
+                        {
+                            Wait,
+                            MoveToPrevious,
+                            MoveToNext,
+                        }
+
+                        public enum StartAnchor
+                        {
+                            Surface,
+                            OriginPosition,
+                            ShooterPosition,
+                        }
+
+                        public enum Conditions
+                        {
+                            Spawn,
+                            DistanceFromTarget,
+                            Lifetime,
+                            DesiredElevation,
+                        }
+
+                        public enum UpRelativeTo
+                        {
+                            RelativeToBlock,
+                            RelativeToGravity,
+                        }
+
+                        [ProtoMember(1)] internal StartAnchor Anchor;
+                        [ProtoMember(2)] internal StartFailure Failure;
+                        [ProtoMember(3)] internal Conditions StartCondition;
+                        [ProtoMember(4)] internal Conditions EndCondition;
+                        [ProtoMember(5)] internal UpRelativeTo UpDirection;
+                        [ProtoMember(6)] internal double AngleOffset;
+                        [ProtoMember(7)] internal double StartValue;
+                        [ProtoMember(8)] internal double EndValue;
+                        [ProtoMember(9)] internal double LeadDistance;
+                        [ProtoMember(10)] internal double DesiredElevation;
+                        [ProtoMember(11)] internal double AccelMulti;
+                        [ProtoMember(12)] internal double SpeedCap;
+                        [ProtoMember(13)] internal bool ReflectTargetMovement;
+                        [ProtoMember(14)] internal ParticleDef AlternateParticle;
+                        [ProtoMember(15)] internal string AlternateSound;
                     }
 
                     [ProtoContract]
@@ -1236,7 +1286,7 @@ namespace Scripts
                 [ProtoMember(3)] internal Vector3D Offset;
                 [ProtoMember(4)] internal ParticleOptionDef Extras;
                 [ProtoMember(5)] internal bool ApplyToShield;
-                [ProtoMember(6)] internal bool ShrinkByDistance;
+                [ProtoMember(6)] internal bool DisableCameraCulling;
             }
         }
     }

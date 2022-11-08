@@ -11,6 +11,12 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.Conditions;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StartAnchor;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StartFailure;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
@@ -297,6 +303,63 @@ namespace Scripts
                     OffsetRatio = 0.05f, // The ratio to offset the random direction (0 to 1) 
                     OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
                 },
+                Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior.
+                {
+                    new ApproachDef
+                    {
+                        Anchor = Surface, //Surface, OriginPosition, ShooterPosition
+                        Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext
+                        StartCondition = Lifetime, // Spawn, DistanceFromTarget, Lifetime, DesiredElevation
+                        EndCondition = DesiredElevation, // DistanceFromTarget, Lifetime, DesiredElevation
+                        UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity
+                        AngleOffset = 0, // value 0 - 1
+                        StartValue = 60, 
+                        EndValue = 1000,
+                        LeadDistance = 20, // Project x meters into the feature
+                        DesiredElevation = 100,
+                        AccelMulti = 1.5, // Modify default acceleration by this factor
+                        SpeedCap = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
+                        ReflectTargetMovement = false, // End conditions relative to the target position will shift as the target moves
+                        AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
+                        {
+                            Name = "", 
+                            Offset = Vector(x: 0, y: 0, z: 0),
+                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                            Extras = new ParticleOptionDef
+                            {
+                                Scale = 1,
+                            },
+                        },
+                        AlternateSound = "BoosterStageSound" // if blank it will use default, must be a default version for this to be useable. 
+                    },
+                    new ApproachDef
+                    {
+                        Anchor = ShooterPosition,
+                        Failure = Wait,
+                        StartCondition = Lifetime,
+                        EndCondition = DistanceFromTarget,
+                        UpDirection = RelativeToGravity,
+                        AngleOffset = 0.5,
+                        StartValue = 0,
+                        EndValue = 10,
+                        LeadDistance = 5,
+                        DesiredElevation = 10,
+                        AccelMulti = 1,
+                        SpeedCap = 200,
+                        ReflectTargetMovement = true,
+                        AlternateParticle = new ParticleDef
+                        {
+                            Name = "",
+                            Offset = Vector(x: 0, y: 0, z: 0),
+                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                            Extras = new ParticleOptionDef
+                            {
+                                Scale = 1,
+                            },
+                        },
+                        AlternateSound = "BoosterStageSound"
+                    },
+                },
                 Mines = new MinesDef  // Note: This is being investigated. Please report to Github, any issues.
                 {
                     DetectRadius = 0,
@@ -334,6 +397,7 @@ namespace Scripts
                     {
                         Name = "", //ShipWelderArc
                         Offset = Vector(x: 0, y: 0, z: 0),
+                        DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
@@ -344,6 +408,7 @@ namespace Scripts
                         Name = "",
                         ApplyToShield = true,
                         Offset = Vector(x: 0, y: 0, z: 0),
+                        DisableCameraCulling = true, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
@@ -355,6 +420,7 @@ namespace Scripts
                         Name = "",
                         ApplyToShield = true,
                         Offset = Vector(x: 0, y: 0, z: 0),
+                        DisableCameraCulling = true, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
