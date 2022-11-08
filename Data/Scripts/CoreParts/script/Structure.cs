@@ -1212,7 +1212,7 @@ namespace Scripts
                         {
                             Surface,
                             OriginPosition,
-                            ShooterPosition,
+                            TargetPosition,
                         }
 
                         public enum Conditions

@@ -337,7 +337,7 @@ namespace Scripts
                     },
                     new ApproachDef
                     {
-                        Anchor = ShooterPosition,
+                        Anchor = TargetPosition,
                         Failure = Wait,
                         StartCondition = Lifetime,
                         EndCondition = DistanceFromTarget,
