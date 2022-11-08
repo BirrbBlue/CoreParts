@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using ProtoBuf;
 using VRageMath;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachesDef;
 
 namespace Scripts
 {
