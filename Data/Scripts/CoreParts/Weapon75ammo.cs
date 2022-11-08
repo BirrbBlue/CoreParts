@@ -17,6 +17,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDe
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StartAnchor;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StartFailure;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.PlaneRelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
@@ -312,6 +313,7 @@ namespace Scripts
                         StartCondition = Lifetime, // Spawn, DistanceFromTarget, Lifetime, DesiredElevation
                         EndCondition = DesiredElevation, // DistanceFromTarget, Lifetime, DesiredElevation
                         UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity
+                        Plane = AtSurface, // AtSurface, AtTarget, AtShooter, AtMidPoint (between target and shooter)
                         AngleOffset = 0, // value 0 - 1
                         StartValue = 60, 
                         EndValue = 1000,
@@ -340,6 +342,7 @@ namespace Scripts
                         StartCondition = Lifetime,
                         EndCondition = DistanceFromTarget,
                         UpDirection = RelativeToGravity,
+                        Plane = AtSurface, // AtSurface, AtTarget, AtShooter, AtMidPoint (between target and shooter)
                         AngleOffset = 0.5,
                         StartValue = 0,
                         EndValue = 10,
