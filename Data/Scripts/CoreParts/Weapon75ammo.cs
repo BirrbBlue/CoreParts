@@ -308,7 +308,6 @@ namespace Scripts
                 {
                     new ApproachDef
                     {
-                        Anchor = Surface, //Surface, OriginPosition, ShooterPosition
                         Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext
                         StartCondition = Lifetime, // Spawn, DistanceFromTarget, Lifetime, DesiredElevation
                         EndCondition = DesiredElevation, // DistanceFromTarget, Lifetime, DesiredElevation
@@ -337,7 +336,6 @@ namespace Scripts
                     },
                     new ApproachDef
                     {
-                        Anchor = TargetPosition,
                         Failure = Wait,
                         StartCondition = Lifetime,
                         EndCondition = DistanceFromTarget,
