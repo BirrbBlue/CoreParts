@@ -1227,6 +1227,8 @@ namespace Scripts
                         {
                             RelativeToBlock,
                             RelativeToGravity,
+                            TargetDirection,
+                            TargetVelocity,
                         }
 
                         public enum PlaneRelativeTo
