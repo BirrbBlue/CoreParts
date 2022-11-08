@@ -318,8 +318,9 @@ namespace Scripts
                         LeadDistance = 20, // Project x meters into the feature
                         DesiredElevation = 100,
                         AccelMulti = 1.5, // Modify default acceleration by this factor
-                        SpeedCap = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
+                        SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         ReflectTargetMovement = false, // End conditions relative to the target position will shift as the target moves
+                        EndOnlyOnNextStart = false, // This stage cannot complete until the conditions of the next stages start are met.
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
                             Name = "", 
@@ -345,13 +346,14 @@ namespace Scripts
                         LeadDistance = 5,
                         DesiredElevation = 10,
                         AccelMulti = 1,
-                        SpeedCap = 200,
+                        SpeedCapMulti = 200,
                         ReflectTargetMovement = true,
+                        EndOnlyOnNextStart = false,
                         AlternateParticle = new ParticleDef
                         {
                             Name = "",
                             Offset = Vector(x: 0, y: 0, z: 0),
-                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                            DisableCameraCulling = true,
                             Extras = new ParticleOptionDef
                             {
                                 Scale = 1,
