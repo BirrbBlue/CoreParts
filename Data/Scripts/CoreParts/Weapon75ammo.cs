@@ -3,16 +3,12 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.Conditions;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StartFailure;
@@ -308,22 +304,34 @@ namespace Scripts
                     new ApproachDef
                     {
                         Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext
+                        OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
                         StartCondition = Lifetime, // Spawn, DistanceFromTarget, Lifetime, DesiredElevation
+                        StartValue = 60,
                         EndCondition = DesiredElevation, // DistanceFromTarget, Lifetime, DesiredElevation
+                        EndValue = 1000,
                         UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity
                         Plane = AtSurface, // AtSurface, AtTarget, AtShooter, AtMidPoint (between target and shooter)
                         AngleOffset = 0, // value 0 - 1
-                        StartValue = 60, 
-                        EndValue = 1000,
                         LeadDistance = 20, // Project x meters into the feature
                         DesiredElevation = 100,
                         AccelMulti = 1.5, // Modify default acceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         ReflectTargetMovement = false, // End conditions relative to the target position will shift as the target moves
                         EndOnlyOnNextStart = false, // This stage cannot complete until the conditions of the next stages start are met.
+                        AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
                             Name = "", 
+                            Offset = Vector(x: 0, y: 0, z: 0),
+                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                            Extras = new ParticleOptionDef
+                            {
+                                Scale = 1,
+                            },
+                        },
+                        StartParticle = new ParticleDef // Optional particle to play when this stage begins
+                        {
+                            Name = "",
                             Offset = Vector(x: 0, y: 0, z: 0),
                             DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                             Extras = new ParticleOptionDef
@@ -336,24 +344,36 @@ namespace Scripts
                     new ApproachDef
                     {
                         Failure = Wait,
+                        OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
                         StartCondition = Lifetime,
+                        StartValue = 0,
                         EndCondition = DistanceFromTarget,
+                        EndValue = 10,
                         UpDirection = RelativeToGravity,
                         Plane = AtSurface, // AtSurface, AtTarget, AtShooter, AtMidPoint (between target and shooter)
                         AngleOffset = 0.5,
-                        StartValue = 0,
-                        EndValue = 10,
                         LeadDistance = 5,
                         DesiredElevation = 10,
                         AccelMulti = 1,
                         SpeedCapMulti = 200,
                         ReflectTargetMovement = true,
                         EndOnlyOnNextStart = false,
+                        AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         AlternateParticle = new ParticleDef
                         {
                             Name = "",
                             Offset = Vector(x: 0, y: 0, z: 0),
                             DisableCameraCulling = true,
+                            Extras = new ParticleOptionDef
+                            {
+                                Scale = 1,
+                            },
+                        },
+                        StartParticle = new ParticleDef // Optional particle to play when this stage begins
+                        {
+                            Name = "",
+                            Offset = Vector(x: 0, y: 0, z: 0),
+                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                             Extras = new ParticleOptionDef
                             {
                                 Scale = 1,
