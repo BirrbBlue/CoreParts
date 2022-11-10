@@ -1227,6 +1227,7 @@ namespace Scripts
 
                         public enum VantagePointRelativeTo
                         {
+                            Origin,
                             Shooter,
                             Target,
                             Surface,
