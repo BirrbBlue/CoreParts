@@ -1256,6 +1256,8 @@ namespace Scripts
                         [ProtoMember(20)] internal bool AdjustVantagePoint;
                         [ProtoMember(21)] internal bool AdjustUpDir;
                         [ProtoMember(22)] internal bool AdjustElevation;
+                        [ProtoMember(23)] internal double TrackingDistance;
+
                     }
 
 

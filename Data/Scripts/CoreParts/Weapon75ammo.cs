@@ -315,7 +315,8 @@ namespace Scripts
                         VantagePoint = Surface, // Surface, Target, Shooter, MidPoint (between target and shooter)
                         AdjustVantagePoint = false, // Updated the approach vantage point as it moves/changes.
                         AngleOffset = 0, // value 0 - 1
-                        LeadDistance = 20, // Project x meters into the feature
+                        LeadDistance = 40, // Add additional "lead" meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
+                        TrackingDistance = 100, // Minimum travel distance before projectile race at target
                         DesiredElevation = 100,
                         AdjustElevation = true, // Desired elevation adjusts in response to VantagePoint and Target changes.
                         AccelMulti = 1.5, // Modify default acceleration by this factor
@@ -359,6 +360,7 @@ namespace Scripts
                         AdjustVantagePoint = false,
                         AngleOffset = 0.5,
                         LeadDistance = 5,
+                        TrackingDistance = 10,
                         DesiredElevation = 10,
                         AdjustElevation = false,
                         AccelMulti = 1,
