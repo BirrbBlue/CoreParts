@@ -304,7 +304,7 @@ namespace Scripts
                 {
                     new ApproachDef
                     {
-                        Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext
+                        Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext -- A failure is when the end condition is reached without having met the start condition. 
                         OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
                         StartCondition = Lifetime, // Spawn, DistanceFromTarget, Lifetime, DesiredElevation
                         StartValue = 60,
@@ -314,15 +314,15 @@ namespace Scripts
                         AdjustUpDir = true, // adjust upDir relative to set condition overtime
                         VantagePoint = Surface, // Surface, Target, Shooter, Origin, MidPoint (between target and shooter)
                         AdjustVantagePoint = false, // Updated the approach vantage point as it moves/changes.
-                        AngleOffset = 0, // value 0 - 1
-                        LeadDistance = 40, // Add additional "lead" meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
-                        TrackingDistance = 100, // Minimum travel distance before projectile race at target
-                        DesiredElevation = 100,
-                        AdjustElevation = true, // Desired elevation adjusts in response to VantagePoint and Target changes.
+                        AngleOffset = 0, // value 0 - 1, rotates the Updir
+                        LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
+                        TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
+                        DesiredElevation = 100, // The desired elevation relative to vantagepoint 
+                        AdjustElevation = true, // Desired elevation adjusts in response to VantagePoint source and Target changes.
                         AccelMulti = 1.5, // Modify default acceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         AdjustToTargetMovement = false, // End conditions relative to the target position will shift as the target moves
-                        EndOnlyOnNextStart = false, // This stage cannot complete until the conditions of the next stages start are met.
+                        EndOnlyOnNextStart = false, // This stages values will continue to apply until the end conditions are met.
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
