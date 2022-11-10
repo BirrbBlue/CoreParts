@@ -310,9 +310,9 @@ namespace Scripts
                         StartValue = 60,
                         EndCondition = DesiredElevation, // DistanceFromTarget, Lifetime, DesiredElevation
                         EndValue = 1000,
-                        UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity
+                        UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
                         AdjustUpDir = true, // adjust upDir relative to set condition overtime
-                        VantagePoint = Surface, // Surface, Target, Shooter, MidPoint (between target and shooter)
+                        VantagePoint = Surface, // Surface, Target, Shooter, Origin, MidPoint (between target and shooter)
                         AdjustVantagePoint = false, // Updated the approach vantage point as it moves/changes.
                         AngleOffset = 0, // value 0 - 1
                         LeadDistance = 40, // Add additional "lead" meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
