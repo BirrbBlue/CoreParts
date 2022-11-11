@@ -1207,6 +1207,7 @@ namespace Scripts
                             Wait,
                             MoveToPrevious,
                             MoveToNext,
+                            ForceReset,
                         }
 
                         public enum Conditions
