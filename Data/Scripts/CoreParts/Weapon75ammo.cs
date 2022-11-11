@@ -306,13 +306,13 @@ namespace Scripts
                     {
                         Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext -- A failure is when the end condition is reached without having met the start condition. 
                         OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
-                        StartCondition1 = Lifetime, // Ignore, Spawn, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        StartCondition1 = Lifetime, // Ignore, Spawn, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         Start1Value = 60, // both conditions are evaluated before activation, use Ignore to skip
-                        StartCondition2 = Ignore, // Ignore, Spawn, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        StartCondition2 = Ignore, // Ignore, Spawn, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         Start2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
-                        EndCondition1 = DesiredElevation, // Ignore, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        EndCondition1 = DesiredElevation, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         End1Value = 1000, // both conditions are evaluated before activation, use Ignore to skip
-                        EndCondition2 = Ignore, // Ignore, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        EndCondition2 = Ignore, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         End2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
                         UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
                         AdjustUpDir = true, // adjust upDir relative to set condition overtime
