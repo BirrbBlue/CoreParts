@@ -306,10 +306,14 @@ namespace Scripts
                     {
                         Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext -- A failure is when the end condition is reached without having met the start condition. 
                         OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
-                        StartCondition = Lifetime, // Spawn, DistanceFromTarget, Lifetime, DesiredElevation
-                        StartValue = 60,
-                        EndCondition = DesiredElevation, // DistanceFromTarget, Lifetime, DesiredElevation
-                        EndValue = 1000,
+                        StartCondition1 = Lifetime, // Ignore, Spawn, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        Start1Value = 60, // both conditions are evaluated before activation, use Ignore to skip
+                        StartCondition2 = Ignore, // Ignore, Spawn, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        Start2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
+                        EndCondition1 = DesiredElevation, // Ignore, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        End1Value = 1000, // both conditions are evaluated before activation, use Ignore to skip
+                        EndCondition2 = Ignore, // Ignore, DistanceFromTarget, Lifetime, DesiredElevation (DO NOT set con1 and con2 to same value)
+                        End2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
                         UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
                         AdjustUpDir = true, // adjust upDir relative to set condition overtime
                         VantagePoint = Surface, // Surface, Target, Shooter, Origin, MidPoint (between target and shooter)
@@ -350,10 +354,14 @@ namespace Scripts
                     {
                         Failure = Wait,
                         OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
-                        StartCondition = Lifetime,
-                        StartValue = 0,
-                        EndCondition = DistanceFromTarget,
-                        EndValue = 10,
+                        StartCondition1 = Lifetime,
+                        Start1Value = 0,
+                        StartCondition2 = Ignore, 
+                        Start2Value = 0,
+                        EndCondition1 = DistanceFromTarget,
+                        End1Value = 10,
+                        EndCondition2 = Ignore,
+                        End2Value = 0,
                         UpDirection = RelativeToGravity,
                         AdjustUpDir = true,
                         VantagePoint = Surface, // Surface, Target, Shooter, MidPoint (between target and shooter)

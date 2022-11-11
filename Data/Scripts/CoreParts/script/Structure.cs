@@ -1211,10 +1211,12 @@ namespace Scripts
 
                         public enum Conditions
                         {
+                            Ignore,
                             Spawn,
                             DistanceFromTarget,
                             Lifetime,
                             DesiredElevation,
+                            MinTravelRequired
                         }
 
                         public enum UpRelativeTo
@@ -1235,13 +1237,13 @@ namespace Scripts
                         }
 
                         [ProtoMember(1)] internal StartFailure Failure;
-                        [ProtoMember(2)] internal Conditions StartCondition;
-                        [ProtoMember(3)] internal Conditions EndCondition;
+                        [ProtoMember(2)] internal Conditions StartCondition1;
+                        [ProtoMember(3)] internal Conditions EndCondition1;
                         [ProtoMember(4)] internal UpRelativeTo UpDirection;
                         [ProtoMember(5)] internal VantagePointRelativeTo VantagePoint;
                         [ProtoMember(6)] internal double AngleOffset;
-                        [ProtoMember(7)] internal double StartValue;
-                        [ProtoMember(8)] internal double EndValue;
+                        [ProtoMember(7)] internal double Start1Value;
+                        [ProtoMember(8)] internal double End1Value;
                         [ProtoMember(9)] internal double LeadDistance;
                         [ProtoMember(10)] internal double DesiredElevation;
                         [ProtoMember(11)] internal double AccelMulti;
@@ -1257,7 +1259,10 @@ namespace Scripts
                         [ProtoMember(21)] internal bool AdjustUpDir;
                         [ProtoMember(22)] internal bool AdjustElevation;
                         [ProtoMember(23)] internal double TrackingDistance;
-
+                        [ProtoMember(24)] internal Conditions StartCondition2;
+                        [ProtoMember(25)] internal double Start2Value;
+                        [ProtoMember(26)] internal Conditions EndCondition2;
+                        [ProtoMember(27)] internal double End2Value;
                     }
 
 
