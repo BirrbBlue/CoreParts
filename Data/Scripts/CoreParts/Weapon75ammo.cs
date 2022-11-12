@@ -321,6 +321,7 @@ namespace Scripts
                         AdjustVantagePoint = false, // Updated the approach vantage point as it moves/changes.
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
+                        PushLeadByTravelDistance = true, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
                         DesiredElevation = 100, // The desired elevation relative to vantagepoint 
                         AdjustElevation = Surface, // Desired elevation adjusts in response relative changes between the proejctile and monitor variables.
@@ -369,6 +370,7 @@ namespace Scripts
                         AdjustVantagePoint = false,
                         AngleOffset = 0.5,
                         LeadDistance = 5,
+                        PushLeadByTravelDistance = false,
                         TrackingDistance = 10,
                         DesiredElevation = 10,
                         AdjustElevation = Target,
