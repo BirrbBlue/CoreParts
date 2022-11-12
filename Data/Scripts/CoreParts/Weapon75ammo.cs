@@ -323,7 +323,7 @@ namespace Scripts
                         LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
                         DesiredElevation = 100, // The desired elevation relative to vantagepoint 
-                        AdjustElevation = true, // Desired elevation adjusts in response to VantagePoint source and Target changes.
+                        AdjustElevation = Surface, // Desired elevation adjusts in response relative changes between the proejctile and monitor variables.
                         AccelMulti = 1.5, // Modify default acceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         AdjustToTargetMovement = false, // End conditions relative to the target position will shift as the target moves
@@ -371,7 +371,7 @@ namespace Scripts
                         LeadDistance = 5,
                         TrackingDistance = 10,
                         DesiredElevation = 10,
-                        AdjustElevation = false,
+                        AdjustElevation = Target,
                         AccelMulti = 1,
                         SpeedCapMulti = 200,
                         AdjustToTargetMovement = true,
