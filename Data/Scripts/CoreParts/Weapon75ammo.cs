@@ -327,8 +327,8 @@ namespace Scripts
                         AdjustElevation = Surface, // Desired elevation adjusts in response relative changes between the proejctile and monitor variables.
                         AccelMulti = 1.5, // Modify default acceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
-                        AdjustToTargetMovement = false, // End conditions relative to the target position will shift as the target moves
-                        EndOnlyOnNextStart = false, // This stages values will continue to apply until the end conditions are met.
+                        AdjustDestinationPosition = false, // End conditions relative to the target position will shift as the target moves
+                        CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
@@ -376,8 +376,8 @@ namespace Scripts
                         AdjustElevation = Target,
                         AccelMulti = 1,
                         SpeedCapMulti = 200,
-                        AdjustToTargetMovement = true,
-                        EndOnlyOnNextStart = false,
+                        AdjustDestinationPosition = true,
+                        CanExpireOnceStarted = false,
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         AlternateParticle = new ParticleDef
                         {
