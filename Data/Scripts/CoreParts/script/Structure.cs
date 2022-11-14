@@ -1251,7 +1251,7 @@ namespace Scripts
 
                         public enum StageEvents
                         {
-                            None,
+                            DoNothing,
                             EndProjectile,
                             EndProjectileOnFailure,
                         }

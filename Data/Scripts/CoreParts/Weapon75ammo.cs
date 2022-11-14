@@ -14,6 +14,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDe
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StartFailure;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.VantagePointRelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
@@ -316,10 +317,12 @@ namespace Scripts
                         Start1Value = 60, // both conditions are evaluated before activation, use Ignore to skip
                         StartCondition2 = Ignore, // Ignore, Spawn, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         Start2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
+                        StartEvent = DoNothing, // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnFailure
                         EndCondition1 = DesiredElevation, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         End1Value = 1000, // both conditions are evaluated before activation, use Ignore to skip
                         EndCondition2 = Ignore, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         End2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
+                        EndEvent = DoNothing,  // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnFailure
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
                         AdjustUpDir = true, // adjust upDir relative to set condition overtime
