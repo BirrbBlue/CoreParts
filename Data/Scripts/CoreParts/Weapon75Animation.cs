@@ -4,6 +4,7 @@ using static Scripts.Structure.WeaponDefinition.AnimationDef;
 using static Scripts.Structure.WeaponDefinition.AnimationDef.PartAnimationSetDef.EventTriggers;
 using static Scripts.Structure.WeaponDefinition.AnimationDef.RelMove.MoveType;
 using static Scripts.Structure.WeaponDefinition.AnimationDef.RelMove;
+using static Scripts.Structure.WeaponDefinition.AnimationDef.PartAnimationSetDef.ResetConditions;
 namespace Scripts
 { // Don't edit above this line
     partial class Parts
@@ -144,6 +145,7 @@ namespace Scripts
                     AnimationDelays = Delays(FiringDelay : 0, ReloadingDelay: 0, OverheatedDelay: 0, TrackingDelay: 0, LockedDelay: 0, OnDelay: 0, OffDelay: 0, BurstReloadDelay: 0, OutOfAmmoDelay: 0, PreFireDelay: 0, StopFiringDelay: 0, StopTrackingDelay:0, InitDelay:0),//Delay before animation starts
                     Reverse = Events(),
                     Loop = Events(),
+                    Resets = Home,
                     EventMoveSets = new Dictionary<PartAnimationSetDef.EventTriggers, RelMove[]>
                     {
                         // Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, NoMagsToLoad, PreFire, EmptyOnGameLoad, StopFiring, StopTracking, LockDelay, Init
@@ -189,10 +191,7 @@ namespace Scripts
                         
                     }
                 },
-               
 				#endregion
-
-
             }
         };
     }

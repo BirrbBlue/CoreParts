@@ -58,6 +58,7 @@ namespace Scripts {
                 StopTrackingSpeed = 0, // Do not track threats traveling faster than this speed; 0 = unlimited.
                 UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
                 MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one, only applies to turreted weapons
+                ShootBlanks = false, // Do not generate projectiles when shooting
             },
             HardPoint = new HardPointDef
             {
