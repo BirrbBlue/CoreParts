@@ -41,7 +41,7 @@ namespace Scripts {
             Targeting = new TargetingDef
             {
                 Threats = new[] {
-                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals, NonThreatsOther, NonThreatsFriend (NonThreats Other/Friend only target entity center, not blocks/parts)
+                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals, NonThreatsOther, NonThreatsFriend, NonThreatsCharacter, NonThreatsVoxel, (NonThreats Other/Friend only target entity center, not blocks/parts)
                 },
                 SubSystems = new[] {
                     Thrust, Utility, Offense, Power, Production, Any, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
