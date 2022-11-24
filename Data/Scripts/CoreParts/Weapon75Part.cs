@@ -87,6 +87,7 @@ namespace Scripts {
                     SuppressFire = false, // If enabled, weapon can only be fired manually.
                     OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
                     DefaultLeadGroup = 0, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
+                    TargetGridCenter = false, // Does not target blocks, instead it targets grid center.
                 },
                 HardWare = new HardwareDef
                 {
