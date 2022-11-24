@@ -286,8 +286,10 @@ namespace Scripts
                 SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
+                TotalAcceleration = 1234.5, // 0 means no limit, something to do due with a thing called delta and something called v.
                 Smarts = new SmartsDef
                 {
+                    MaxDeAccelPerSec = 0, // 0 means no limit, range is 0 - 1, something greater than 0 limits how much velocity can be lost per second during turns.
                     Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 1f, // controls how responsive tracking is.
                     MaxLateralThrust = 0.5, // controls how sharp the trajectile may turn
@@ -336,6 +338,8 @@ namespace Scripts
                         DesiredElevation = 100, // The desired elevation relative to vantagepoint 
                         AdjustElevation = Surface, // Desired elevation adjusts in response relative changes between the proejctile and monitor variables.
                         AccelMulti = 1.5, // Modify default acceleration by this factor
+                        DeAccelMulti = 0, // Modifies your default deacceleration by this factor
+                        TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         AdjustDestinationPosition = false, // End conditions relative to the target position will shift as the target moves
                         CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
@@ -386,6 +390,8 @@ namespace Scripts
                         AdjustElevation = Target,
                         AccelMulti = 1,
                         SpeedCapMulti = 200,
+                        DeAccelMulti = 0, 
+                        TotalAccelMulti = 0, 
                         AdjustDestinationPosition = true,
                         CanExpireOnceStarted = false,
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
@@ -617,8 +623,10 @@ namespace Scripts
                 SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
+                TotalAcceleration = 1234.5, // 0 means no limit, something to do due with a thing called delta and something called v.
                 Smarts = new SmartsDef
                 {
+                    MaxDeAccelPerSec = 0, // 0 means no limit, range is 0 - 1, something greater than 0 limits how much velocity can be lost per second during turns.
                     Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 1f, // controls how responsive tracking is.
                     MaxLateralThrust = 0.5, // controls how sharp the trajectile may turn

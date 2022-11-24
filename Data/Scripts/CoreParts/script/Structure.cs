@@ -247,7 +247,7 @@ namespace Scripts
                     NonThreatsOther,
                     NonThreatsFriend,
                     NonThreatsVoxel,
-                    NonThreatCharacter,
+                    NonThreatsCharacter,
                 }
 
                 public enum BlockTypes
@@ -1200,6 +1200,7 @@ namespace Scripts
                     [ProtoMember(13)] internal float GravityMultiplier;
                     [ProtoMember(14)] internal uint MaxTrajectoryTime;
                     [ProtoMember(15)] internal ApproachDef[] Approaches;
+                    [ProtoMember(16)] internal double TotalAcceleration;
 
                     [ProtoContract]
                     public struct SmartsDef
@@ -1219,6 +1220,7 @@ namespace Scripts
                         [ProtoMember(13)] internal bool CheckFutureIntersection;
                         [ProtoMember(14)] internal double NavAcceleration;
                         [ProtoMember(15)] internal bool AccelClearance;
+                        [ProtoMember(16)] internal double MaxDeAccelPerSec;
                     }
 
                     [ProtoContract]
@@ -1310,6 +1312,8 @@ namespace Scripts
                         [ProtoMember(30)] internal ConditionOperators Operators;
                         [ProtoMember(31)] internal StageEvents StartEvent;
                         [ProtoMember(32)] internal StageEvents EndEvent;
+                        [ProtoMember(33)] internal double TotalAccelMulti;
+                        [ProtoMember(34)] internal double DeAccelMulti;
                     }
 
 
