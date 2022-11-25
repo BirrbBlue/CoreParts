@@ -244,10 +244,16 @@ namespace Scripts
                     Neutrals,
                     Meteors,
                     Other,
-                    NonThreatsOther,
-                    NonThreatsFriend,
-                    NonThreatsVoxel,
-                    NonThreatsCharacter,
+                    ScanNeutralGrid,
+                    ScanFriendlyGrid,
+                    ScanFriendlyCharacter,
+                    ScanRoid,
+                    ScanPlanet,
+                    ScanEnemyCharacter,
+                    ScanEnemyGrid,
+                    ScanNeutralCharacter,
+                    ScanUnOwnedGrid,
+                    ScanOwnersGrid
                 }
 
                 public enum BlockTypes
@@ -432,6 +438,7 @@ namespace Scripts
                 [ProtoMember(13)] internal bool AddToleranceToTracking;
                 [ProtoMember(14)] internal bool CanShootSubmerged;
                 [ProtoMember(15)] internal bool NpcSafe;
+                [ProtoMember(16)] internal bool ScanTrackOnly;
 
                 [ProtoContract]
                 public struct LoadingDef
@@ -469,6 +476,7 @@ namespace Scripts
                     [ProtoMember(2)] internal bool DamageModifier;
                     [ProtoMember(3)] internal bool ToggleGuidance;
                     [ProtoMember(4)] internal bool EnableOverload;
+                    [ProtoMember(5)] internal bool AlternateUi;
                 }
 
 
