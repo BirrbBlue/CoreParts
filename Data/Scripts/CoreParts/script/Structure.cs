@@ -284,7 +284,8 @@ namespace Scripts
                 [ProtoMember(14)] internal int MaxTrackingTime;
                 [ProtoMember(15)] internal bool ShootBlanks;
                 [ProtoMember(16)] internal bool ExportTargets;
-                [ProtoMember(17)] internal string ScannerId;
+                [ProtoMember(17)] internal string ChannelId;
+                [ProtoMember(18)] internal int ExportLimit;
 
             }
 

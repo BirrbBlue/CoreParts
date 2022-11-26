@@ -60,7 +60,8 @@ namespace Scripts {
                 MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one, only applies to turreted weapons
                 ShootBlanks = false, // Do not generate projectiles when shooting
                 ExportTargets = false, // Pushes its current target to the grid/construct so that other slaved weapons can fire on it.
-                ScannerId = "", // This ID is used either by the master weapon (if ExportTargets = true) or the slave weapon (if its false).
+                ExportLimit = 0, // The limit at which this weapon will no longer export targets onto the channel.
+                ChannelId = "", // This ID is used either by the master weapon (if ExportTargets = true) or the slave weapon (if its false).
             },
             HardPoint = new HardPointDef
             {
