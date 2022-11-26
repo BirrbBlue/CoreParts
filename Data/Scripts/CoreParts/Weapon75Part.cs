@@ -5,6 +5,9 @@ using static Scripts.Structure.WeaponDefinition.HardPointDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.Prediction;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.BlockTypes;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.Threat;
+using static Scripts.Structure.WeaponDefinition.TargetingDef;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.Comms;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.SecurityMode;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef.HardwareType;
 
@@ -59,9 +62,20 @@ namespace Scripts {
                 UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
                 MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one, only applies to turreted weapons
                 ShootBlanks = false, // Do not generate projectiles when shooting
-                ExportTargets = false, // Pushes its current target to the grid/construct so that other slaved weapons can fire on it.
-                ExportLimit = 0, // The limit at which this weapon will no longer export targets onto the channel.
-                ChannelId = "", // This ID is used either by the master weapon (if ExportTargets = true) or the slave weapon (if its false).
+                
+                Communications = new CommunicationDef 
+                {
+                    StoreTargets = false, // Pushes its current target to the grid/construct so that other slaved weapons can fire on it.
+                    StorageLimit = 0, // The limit at which this weapon will no longer export targets onto the channel.
+                    StorageLocation = "", // This location ID is used either by the master weapon (if ExportTargets = true) or the slave weapon (if its false).  This is shared across the conncted grids.
+                    Mode = NoComms, // NoComms, BroadCast, Relay, Jamming, RelayAndBroadCast
+                    Security = Private, // Public, Private, Secure
+                    BroadCastChannel = "", // If defined you will broadcast to all other scanners on this channel.
+                    BroadCastRange = 0, // This is the range that you will broadcast up too.  Note that this value applies to both the sender and receiver, both range requirements must be met. 
+                    JammingStrength = 0, // If Mode is set to jamming, then this value will decrease the "range" of broadcasts.  Strength falls off at sqr of the distance.
+                    RelayChannel = "", // If defined this channel will be used to relay any targets it seems on the broadcast channel.
+                    RelayRange = 0, // This defines the range that any broadcasts will be relayed.  Note that this channel id is seen as the "broadcast" channel for all receivers, broadcast range requirements apply. 
+                },
             },
             HardPoint = new HardPointDef
             {
