@@ -60,7 +60,8 @@ namespace Scripts {
                 MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one, only applies to turreted weapons
                 ShootBlanks = false, // Do not generate projectiles when shooting
                 ExportTargets = false, // Pushes its current target to the grid/construct so that other slaved weapons can fire on it.
-                ScannerId = "", // If you want this weapon to slave itself to "ScanTrackOnly" master weapons, then define the PartName of the Masters to slave to.
+                ScannerId = "", // If you want this weapon to slave itself to a "ScanTrackOnly" master weapons, then define the
+                                // "PartName + PartId" (starting at 0 and incrementing per MountPointDef) of the Masters to slave to (e.g. "Gatling 0").
             },
             HardPoint = new HardPointDef
             {
