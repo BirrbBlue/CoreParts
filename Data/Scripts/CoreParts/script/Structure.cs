@@ -291,10 +291,11 @@ namespace Scripts
                     public enum Comms
                     {
                         NoComms,
+                        LocalNetwork,
                         BroadCast,
                         Relay,
+                        Repeat,
                         Jamming,
-                        RelayAndBroadCast,
                     }
 
                     public enum SecurityMode
