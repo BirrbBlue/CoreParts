@@ -289,10 +289,10 @@ namespace Scripts
                 TotalAcceleration = 1234.5, // 0 means no limit, something to do due with a thing called delta and something called v.
                 Smarts = new SmartsDef
                 {
-                    SteeringLimit = 0, // 0 means no limit,value is in degrees, good starting is 150.  This enable advanced smart "control" and is more expensive than other methods.
+                    SteeringLimit = 0, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
                     Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 1f, // controls how responsive tracking is.
-                    MaxLateralThrust = 0.75, // controls how sharp the trajectile may turn, this is the cheaper but less realistic version of SteeringLimit, but is a better fit for most smart projectiles
+                    MaxLateralThrust = 0.75, // controls how sharp the projectile may turn, this is the cheaper but less realistic version of SteeringLimit, cost of 2 on a scale of 1-5, 0 being basic smart.
                     NavAcceleration = 0, // helps influence how the projectile steers. 
                     TrackingDelay = 0, // Measured in Shape diameter units traveled.
                     AccelClearance = false, // Setting this to true will prevent smart acceleration until it is clear of the grid and tracking delay has been met (free fall).
@@ -306,7 +306,7 @@ namespace Scripts
                     OffsetRatio = 0.05f, // The ratio to offset the random direction (0 to 1) 
                     OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
                 },
-                Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior.
+                Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior. Cost level of 4+, or 5+ if used with steering.
                 {
                     new ApproachDef
                     {
@@ -626,10 +626,10 @@ namespace Scripts
                 TotalAcceleration = 1234.5, // 0 means no limit, something to do due with a thing called delta and something called v.
                 Smarts = new SmartsDef
                 {
-                    SteeringLimit = 0, // 0 means no limit,value is in degrees, good starting is 150.  This enable advanced smart "control" and is more expensive than other methods.
+                    SteeringLimit = 0, // 0 means no limit,v alue is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
                     Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 1f, // controls how responsive tracking is.
-                    MaxLateralThrust = 0.75, // controls how sharp the trajectile may turn, this is the cheaper but less realistic version of SteeringLimit, but is a better fit for most smart projectiles
+                    MaxLateralThrust = 0.75, // controls how sharp the projectile may turn, this is the cheaper but less realistic version of SteeringLimit, cost of 2 on a scale of 1-5, 0 being basic smart.
                     NavAcceleration = 0, // helps influence how the projectile steers. 
                     TrackingDelay = 5, // Measured in Shape diameter units traveled.
                     MaxChaseTime = 450, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
