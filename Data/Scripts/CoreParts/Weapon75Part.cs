@@ -69,6 +69,7 @@ namespace Scripts {
                     StorageLimit = 0, // The limit at which this weapon will no longer export targets onto the channel.
                     StorageLocation = "", // This location ID is used either by the master weapon (if ExportTargets = true) or the slave weapon (if its false).  This is shared across the conncted grids.
                     Mode = NoComms, // NoComms, BroadCast, LocalNetwork, Repeater, Relay, Jamming
+                    TargetPersists = false, // Whether or not the weapon will retain its existing target even if the source of the target releases theirs.
                     Security = Private, // Public, Private, Secure
                     BroadCastChannel = "", // If defined you will broadcast to all other scanners on this channel.
                     BroadCastRange = 0, // This is the range that you will broadcast up too.  Note that this value applies to both the sender and receiver, both range requirements must be met. 
