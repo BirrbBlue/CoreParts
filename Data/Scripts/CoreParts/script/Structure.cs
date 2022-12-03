@@ -316,7 +316,7 @@ namespace Scripts
                     [ProtoMember(9)] internal string RelayChannel;
                     [ProtoMember(10)] internal double RelayRange;
                     [ProtoMember(11)] internal bool TargetPersists;
-                    [ProtoMember(12)] internal bool StoreLimitPerWeapon;
+                    [ProtoMember(12)] internal bool StoreLimitPerBlock;
                 }
             }
 

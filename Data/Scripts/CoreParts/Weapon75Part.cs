@@ -67,7 +67,7 @@ namespace Scripts {
                 {
                     StoreTargets = false, // Pushes its current target to the grid/construct so that other slaved weapons can fire on it.
                     StorageLimit = 0, // The limit at which this weapon will no longer export targets onto the channel.
-                    StoreLimitPerWeapon = false, // Setting this to true will switch the StorageLimit from being per Location to per Weapon instance (in world) per Location.
+                    StoreLimitPerBlock = false, // Setting this to true will switch the StorageLimit from being per Location to per block per Location.
                     StorageLocation = "", // This location ID is used either by the master weapon (if ExportTargets = true) or the slave weapon (if its false).  This is shared across the conncted grids.
                     Mode = NoComms, // NoComms, BroadCast, LocalNetwork, Repeater, Relay, Jamming
                     TargetPersists = false, // Whether or not the weapon will retain its existing target even if the source of the target releases theirs.
