@@ -148,7 +148,7 @@ namespace Scripts
                     Resets = Home,
                     EventMoveSets = new Dictionary<PartAnimationSetDef.EventTriggers, RelMove[]>
                     {
-                        // Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, NoMagsToLoad, PreFire, EmptyOnGameLoad, StopFiring, StopTracking, LockDelay, Init
+                        // Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, NoMagsToLoad, PreFire, EmptyOnGameLoad, StopFiring, StopTracking, LockDelay, Init, Homing, TargetAligned, WhileOn, TargetRanged100, TargetRanged75, TargetRanged50, TargetRanged25
                         [Firing] =
                             new[]
                             {

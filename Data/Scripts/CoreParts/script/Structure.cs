@@ -353,6 +353,11 @@ namespace Scripts
                         Init,
                         Homing,
                         TargetAligned,
+                        WhileOn,
+                        TargetRanged100,
+                        TargetRanged75,
+                        TargetRanged50,
+                        TargetRanged25,
                     }
 
                     public enum ResetConditions
@@ -503,7 +508,8 @@ namespace Scripts
                     [ProtoMember(20)] internal int MagsToLoad;
                     [ProtoMember(21)] internal int MaxActiveProjectiles;
                     [ProtoMember(22)] internal int MaxReloads;
-
+                    [ProtoMember(23)] internal bool GoHomeToReload;
+                    [ProtoMember(24)] internal bool DropTargetUntilLoaded;
                 }
 
 
