@@ -62,7 +62,7 @@ namespace Scripts {
                 UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
                 MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one, only applies to turreted weapons
                 ShootBlanks = false, // Do not generate projectiles when shooting
-                
+                FocusOnly = false, // This weapon can only track focus targets.
                 Communications = new CommunicationDef 
                 {
                     StoreTargets = false, // Pushes its current target to the grid/construct so that other slaved weapons can fire on it.
@@ -98,6 +98,7 @@ namespace Scripts {
                     ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
                     EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
                     AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
+                    DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
                 },
                 Ai = new AiDef
                 {

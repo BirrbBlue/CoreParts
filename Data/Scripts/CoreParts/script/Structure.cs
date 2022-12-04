@@ -284,6 +284,8 @@ namespace Scripts
                 [ProtoMember(14)] internal int MaxTrackingTime;
                 [ProtoMember(15)] internal bool ShootBlanks;
                 [ProtoMember(19)] internal CommunicationDef Communications;
+                [ProtoMember(20)] internal bool FocusOnly;
+                [ProtoMember(21)] internal bool EvictUniqueTargets;
 
                 [ProtoContract]
                 public struct CommunicationDef
@@ -513,6 +515,7 @@ namespace Scripts
                     [ProtoMember(3)] internal bool ToggleGuidance;
                     [ProtoMember(4)] internal bool EnableOverload;
                     [ProtoMember(5)] internal bool AlternateUi;
+                    [ProtoMember(6)] internal bool DisableStatus;
                 }
 
 
