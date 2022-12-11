@@ -271,6 +271,7 @@ namespace Scripts
                 ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
                 RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
                 OneParticle = false, // Only spawn one particle hit per beam weapon.
+                FakeVoxelHits = false, // If this beam hits/misses a voxel it assumes it will continue to do so for the next 60 ticks at the same hit length and not extend further within this window.  This can save up to 60x in cpu.
             },
             Trajectory = new TrajectoryDef
             {
