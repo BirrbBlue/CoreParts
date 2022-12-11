@@ -893,7 +893,7 @@ namespace Scripts
                     [ProtoMember(3)] internal bool VirtualBeams;
                     [ProtoMember(4)] internal bool RotateRealBeam;
                     [ProtoMember(5)] internal bool OneParticle;
-                    [ProtoMember(6)] internal bool FakeVoxelHits;
+                    [ProtoMember(6)] internal int FakeVoxelHitTicks;
                 }
 
                 [ProtoContract]
