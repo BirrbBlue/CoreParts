@@ -1278,6 +1278,7 @@ namespace Scripts
                         [ProtoMember(15)] internal bool AccelClearance;
                         [ProtoMember(16)] internal double SteeringLimit;
                         [ProtoMember(17)] internal bool FocusOnly;
+                        [ProtoMember(18)] internal double OffsetMinRange;
                     }
 
                     [ProtoContract]
