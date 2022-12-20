@@ -307,7 +307,7 @@ namespace Scripts
                     OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
                     OffsetMinRange = 0, // The range from target at which offsets are no longer active
                     FocusOnly = false, // only target the constructs Ai's focus target
-
+                    FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
                 },
                 Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior. Cost level of 4+, or 5+ if used with steering.
                 {

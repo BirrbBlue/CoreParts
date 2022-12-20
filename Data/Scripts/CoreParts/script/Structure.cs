@@ -286,7 +286,7 @@ namespace Scripts
                 [ProtoMember(19)] internal CommunicationDef Communications;
                 [ProtoMember(20)] internal bool FocusOnly;
                 [ProtoMember(21)] internal bool EvictUniqueTargets;
-
+                
                 [ProtoContract]
                 public struct CommunicationDef
                 {
@@ -1279,6 +1279,7 @@ namespace Scripts
                         [ProtoMember(16)] internal double SteeringLimit;
                         [ProtoMember(17)] internal bool FocusOnly;
                         [ProtoMember(18)] internal double OffsetMinRange;
+                        [ProtoMember(19)] internal bool FocusEviction;
                     }
 
                     [ProtoContract]
