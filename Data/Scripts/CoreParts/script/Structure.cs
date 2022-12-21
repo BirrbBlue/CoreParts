@@ -1281,6 +1281,7 @@ namespace Scripts
                         [ProtoMember(18)] internal double OffsetMinRange;
                         [ProtoMember(19)] internal bool FocusEviction;
                         [ProtoMember(20)] internal double ScanRange;
+                        [ProtoMember(21)] internal bool NoSteering;
                     }
 
                     [ProtoContract]

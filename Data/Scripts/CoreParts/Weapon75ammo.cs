@@ -309,6 +309,7 @@ namespace Scripts
                     FocusOnly = false, // only target the constructs Ai's focus target
                     FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
                     ScanRange = 0, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
+                    NoSteering = false, // this disables target follow and instead travel straight ahead (but will respect offsets).
                 },
                 Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior. Cost level of 4+, or 5+ if used with steering.
                 {
