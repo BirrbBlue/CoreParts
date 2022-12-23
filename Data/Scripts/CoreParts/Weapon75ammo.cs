@@ -349,6 +349,11 @@ namespace Scripts
                         AdjustDestinationPosition = false, // End conditions relative to the target position will shift as the target moves
                         CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
+                        Orbit = false, // Orbit the target
+                        OrbitRadius = 0, // The orbit radius to extend between the projectile and the target (target volume + this value)
+                        OffsetRadius = 0, // Radius to offset from target.  
+                        OffsetTime = 0, // How often to change the offset direction.
+
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
                             Name = "", 
