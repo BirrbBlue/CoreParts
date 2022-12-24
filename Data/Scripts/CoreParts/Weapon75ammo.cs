@@ -354,7 +354,7 @@ namespace Scripts
                         OrbitRadius = 0, // The orbit radius to extend between the projectile and the target (target volume + this value)
                         OffsetRadius = 0, // Radius to offset from target.  
                         OffsetTime = 0, // How often to change the offset direction.
-
+                        NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
                             Name = "", 

@@ -1380,6 +1380,7 @@ namespace Scripts
                         [ProtoMember(36)] internal double OrbitRadius;
                         [ProtoMember(37)] internal int OffsetTime;
                         [ProtoMember(38)] internal double OffsetRadius;
+                        [ProtoMember(39)] internal bool NoTimedSpawns;
                     }
 
 
