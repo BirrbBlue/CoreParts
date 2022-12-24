@@ -351,7 +351,8 @@ namespace Scripts
                         CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         Orbit = false, // Orbit the target
-                        OrbitRadius = 0, // The orbit radius to extend between the projectile and the target (target volume + this value)
+                        OrbitMinRadius = 0, // The min orbit radius to extend between the projectile and the target (target volume + this value)
+                        OrbitMaxRadius = 0, // The max orbit radius to extend between the projectile and the target (target volume + this value)
                         OffsetRadius = 0, // Radius to offset from target.  
                         OffsetTime = 0, // How often to change the offset direction.
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
@@ -407,7 +408,7 @@ namespace Scripts
                         CanExpireOnceStarted = false,
                         AlternateModel = "", 
                         Orbit = false, 
-                        OrbitRadius = 0, 
+                        OrbitMinRadius = 0, 
                         OffsetRadius = 0, 
                         OffsetTime = 0, 
                         AlternateParticle = new ParticleDef

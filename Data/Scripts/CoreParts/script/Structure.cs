@@ -1377,10 +1377,11 @@ namespace Scripts
                         [ProtoMember(33)] internal double TotalAccelMulti;
                         [ProtoMember(34)] internal double DeAccelMulti;
                         [ProtoMember(35)] internal bool Orbit;
-                        [ProtoMember(36)] internal double OrbitRadius;
+                        [ProtoMember(36)] internal double OrbitMinRadius;
                         [ProtoMember(37)] internal int OffsetTime;
                         [ProtoMember(38)] internal double OffsetRadius;
                         [ProtoMember(39)] internal bool NoTimedSpawns;
+                        [ProtoMember(40)] internal double OrbitMaxRadius;
                     }
 
 
