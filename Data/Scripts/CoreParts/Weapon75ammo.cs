@@ -298,7 +298,8 @@ namespace Scripts
                     AccelClearance = false, // Setting this to true will prevent smart acceleration until it is clear of the grid and tracking delay has been met (free fall).
                     MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
-                    CheckFutureIntersection = false, // Utilize obstacle avoidance for drones
+                    CheckFutureIntersection = false, // Utilize obstacle avoidance for drones/smarts
+                    FutureIntersectionRange = 0, // Range in front of the projectile at which it will detect obstacle.  If set to zero it defaults to DesiredSpeed + Shape Diameter
                     MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = false, // Roam current area after target loss
@@ -379,7 +380,7 @@ namespace Scripts
                     new ApproachDef
                     {
                         Failure = Wait,
-                        OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
+                        OnFailureRevertTo = -1, 
                         StartCondition1 = Lifetime,
                         Start1Value = 0,
                         StartCondition2 = Ignore, 
@@ -390,7 +391,7 @@ namespace Scripts
                         End2Value = 0,
                         UpDirection = RelativeToGravity,
                         AdjustUpDir = true,
-                        VantagePoint = Surface, // Surface, Target, Shooter, MidPoint (between target and shooter)
+                        VantagePoint = Surface, 
                         AdjustVantagePoint = false,
                         AngleOffset = 0.5,
                         LeadDistance = 5,
@@ -404,7 +405,11 @@ namespace Scripts
                         TotalAccelMulti = 0, 
                         AdjustDestinationPosition = true,
                         CanExpireOnceStarted = false,
-                        AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
+                        AlternateModel = "", 
+                        Orbit = false, 
+                        OrbitRadius = 0, 
+                        OffsetRadius = 0, 
+                        OffsetTime = 0, 
                         AlternateParticle = new ParticleDef
                         {
                             Name = "",
@@ -581,122 +586,77 @@ namespace Scripts
 
  private AmmoDef AmmoType2 => new AmmoDef // Your ID, for slotting into the Weapon CS --- This ammo has been stripped to a minimal config as an example
         {
-            AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
-            AmmoRound = "Ammo 2", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
-            HybridRound = false, // Use both a physical ammo magazine and energy per shot.
-            EnergyCost = 0.1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 111f, // Direct damage; one steel plate is worth 100.
-            Mass = 0f, // In kilograms; how much force the impact will apply to the target.
-            Health = 1, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
-            BackKickForce = 0f, // Recoil. This is applied to the Parent Grid.
-            DecayPerShot = 0f, // Damage to the firing weapon itself.
-            HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
-            IgnoreWater = false, // Whether the projectile should be able to penetrate water when using WaterMod.
-            IgnoreVoxels = false, // Whether the projectile should be able to penetrate voxels.
+            AmmoMagazine = "Energy", 
+            AmmoRound = "Ammo 2", 
+            HybridRound = false, 
+            EnergyCost = 0.1f, 
+            BaseDamage = 111f, 
+            Health = 1,
+            HardPointUsable = true, 
+            EnergyMagazineSize = 1, 
 
             AreaOfDamage = new AreaOfDamageDef
             {
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 5f, // Meters
+                    Radius = 5f, 
                     Damage = 5f,
                     Depth = 1f,
                     MaxAbsorb = 0f,
-                    Falloff = Squeeze, //.NoFalloff applies the same damage to all blocks in radius
-                    //.Linear drops evenly by distance from center out to max radius
-                    //.Curve drops off damage sharply as it approaches the max radius
-                    //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
-                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                    ArmOnlyOnHit = false, // Detonation only is available, After it hits something, when this is true. IE, if shot down, it won't explode.
-                    MinArmingTime = 100, // In ticks, before the Ammo is allowed to explode, detonate or similar; This affects shrapnel spawning.
-                    NoVisuals = false,
-                    NoSound = false,
+                    Falloff = Squeeze, 
+                    MinArmingTime = 100, 
                     ParticleScale = 1,
-                    CustomParticle = "particleName", // Particle SubtypeID, from your Particle SBC
-                    CustomSound = "soundName", // SubtypeID from your Audio SBC, not a filename
+                    CustomParticle = "particleName",
+                    CustomSound = "soundName", 
                 }, 
             },
             Trajectory = new TrajectoryDef
             {
-                Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                TargetLossDegree = 80f, // Degrees, Is pointed forward
-                TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                MaxLifeTime = 1200, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). Please have a value for this, It stops Bad things.
-                AccelPerSec = 120f, // Acceleration in Meters Per Second. Projectile starts on tick 0 at its parents (weapon/other projectiles) travel velocity.
-                DesiredSpeed = 600, // voxel phasing if you go above 5100
-                MaxTrajectory = 1000f, // Max Distance the projectile or beam can Travel.
-                DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
-                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
-                SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
-                RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
-                MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
-                TotalAcceleration = 1234.5, // 0 means no limit, something to do due with a thing called delta and something called v.
-                Smarts = new SmartsDef
-                {
-                    SteeringLimit = 0, // 0 means no limit,v alue is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
-                    Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
-                    Aggressiveness = 1f, // controls how responsive tracking is.
-                    MaxLateralThrust = 0.75, // controls how sharp the projectile may turn, this is the cheaper but less realistic version of SteeringLimit, cost of 2 on a scale of 1-5, 0 being basic smart.
-                    NavAcceleration = 0, // helps influence how the projectile steers. 
-                    TrackingDelay = 5, // Measured in Shape diameter units traveled.
-                    MaxChaseTime = 450, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
-                    CheckFutureIntersection = false, // Utilize obstacle avoidance for drones
-                    MaxTargets = 3, // Number of targets allowed before ending, 0 = unlimited
-                    NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
-                    Roam = false, // Roam current area after target loss
-                    KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
-                    OffsetRatio = 0f, // The ratio to offset the random direction (0 to 1) 
-                    OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
-                },
+                Guidance = None, 
+                TargetLossDegree = 80f, 
+                MaxLifeTime = 1200, 
+                AccelPerSec = 120f, 
+                DesiredSpeed = 600, 
+                MaxTrajectory = 1000f, 
+                TotalAcceleration = 1234.5,
             },
             AmmoGraphics = new GraphicDef
             {
-                ModelName = "", // Model Path goes here.  "\\Models\\Ammo\\Starcore_Arrow_Missile_Large"
-                VisualProbability = 1f, // %
+                ModelName = "", 
+                VisualProbability = 1f,
                 ShieldHitDraw = false,
                 Particles = new AmmoParticleDef
                 {
                     Hit = new ParticleDef
                     {
-                        Name = "",
-                        ApplyToShield = true,
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Scale = 1,
-                            HitPlayChance = 1f,
-                        },
                     },
                 },
                 Lines = new LineDef
                 {
-                    ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 0f), // adds random value to default width (negatives shrinks width)
+                    ColorVariance = Random(start: 0.75f, end: 2f),
+                    WidthVariance = Random(start: 0f, end: 0f), 
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
                         Length = 5f, //
                         Width = 0.1f, //
-                        Color = Color(red: 3, green: 2, blue: 1f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
-                        VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
-                        VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
-                        Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-                            "WeaponLaser", // Please always have this Line set, if this Section is enabled.
+                        Color = Color(red: 3, green: 2, blue: 1f, alpha: 1), 
+                        VisualFadeStart = 0, 
+                        VisualFadeEnd = 0, 
+                        Textures = new[] {
+                            "WeaponLaser", 
                         },
-                        TextureMode = Normal, // Normal, Cycle, Chaos, Wave
+                        TextureMode = Normal, 
                     },
                     Trail = new TrailDef
                     {
                         Enable = true,
                         Textures = new[] {
-                            "WeaponLaser", // Please always have this Line set, if this Section is enabled.
+                            "WeaponLaser", 
                         },
                         TextureMode = Normal,
-                        DecayTime = 3, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
+                        DecayTime = 3, 
                         Color = Color(red: 0, green: 0, blue: 1, alpha: 1),
                         Back = false,
                         CustomWidth = 0,
@@ -707,12 +667,6 @@ namespace Scripts
             },
             AmmoAudio = new AmmoAudioDef
             {
-                TravelSound = "", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
-                HitSound = "",
-                ShieldHitSound = "",
-                PlayerHitSound = "",
-                VoxelHitSound = "",
-                FloatingHitSound = "",
                 HitPlayChance = 0.5f,
                 HitPlayShield = true,
             },
