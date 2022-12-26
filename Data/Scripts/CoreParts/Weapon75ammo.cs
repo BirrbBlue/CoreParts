@@ -31,9 +31,6 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Trace
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.DecalDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
-using ParallelTasks;
-using static VRage.Library.Memory.MyMemoryTracker;
-using VRage.Sync;
 
 namespace Scripts
 { // Don't edit above this line
