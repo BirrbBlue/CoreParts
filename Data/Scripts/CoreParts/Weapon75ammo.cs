@@ -511,6 +511,8 @@ namespace Scripts
                 {
                     ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
                     WidthVariance = Random(start: 0f, end: 0f), // adds random value to default width (negatives shrinks width)
+                    DropParentVelocity = false, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
+
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
@@ -520,7 +522,6 @@ namespace Scripts
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
                         AlwaysDraw = false, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
-                        DropParentVelocity = false, // If set to true the tracer will not take on the parents (grid/player) initial velocity when rendering.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                             "WeaponLaser", // Please always have this Line set, if this Section is enabled.
                         },
@@ -546,7 +547,6 @@ namespace Scripts
                     {
                         Enable = false,
                         AlwaysDraw = false, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
-                        DropParentVelocity = false, // If set to true the trail will not take on the parents (grid/player) initial velocity when rendering.
                         Textures = new[] {
                             "", // Please always have this Line set, if this Section is enabled.
                         },
