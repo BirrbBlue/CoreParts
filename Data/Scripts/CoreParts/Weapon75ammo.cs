@@ -57,7 +57,7 @@ namespace Scripts
             NpcSafe = false, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             Sync = new SynchronizeDef
             {
-                Full = false, // Be careful, do not use on high fire rate weapons. Do not use with other sync options. Only works on drones and Smart projectiles.Will only work on chained / staged fragments with a frag count of 1, will no longer sync once frag chain > 1.
+                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments.
                 PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
                 OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },
