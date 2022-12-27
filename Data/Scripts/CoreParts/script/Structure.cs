@@ -1331,12 +1331,13 @@ namespace Scripts
 
                         public enum VantagePointRelativeTo
                         {
-                            Target,
                             Origin,
                             Shooter,
+                            Target,
                             Surface,
                             MidPoint,
                             Current,
+                            None,
                         }
 
                         public enum ConditionOperators
