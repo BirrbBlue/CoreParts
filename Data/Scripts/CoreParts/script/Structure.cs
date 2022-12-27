@@ -1337,7 +1337,7 @@ namespace Scripts
                             Surface,
                             MidPoint,
                             Current,
-                            None,
+                            Nothing,
                         }
 
                         public enum ConditionOperators

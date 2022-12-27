@@ -340,7 +340,7 @@ namespace Scripts
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
                         AdjustUpDir = true, // adjust upDir relative to set condition overtime
-                        VantagePoint = Surface, // Surface, Target, Shooter, Origin, Current, MidPoint,None (between target and shooter)
+                        VantagePoint = Surface, // Surface, Target, Shooter, Origin, Current, MidPoint, Nothing (between target and shooter)
                         AdjustVantagePoint = false, // Updated the approach vantage point as it moves/changes.
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
@@ -353,7 +353,7 @@ namespace Scripts
                         TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         AdjustDestinationPosition = false, // End conditions relative to the target position will shift as the target moves
-                        AdjustDestination = Current, // Surface, Origin, MidPoint, Shooter, Target, Current, None (Straight ahead)
+                        AdjustDestination = Target, // Surface, Origin, MidPoint, Shooter, Target, Current, Nothing (Straight ahead)
                         CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         Orbit = false, // Orbit the target
