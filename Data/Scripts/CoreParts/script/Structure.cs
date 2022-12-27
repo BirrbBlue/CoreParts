@@ -1305,7 +1305,7 @@ namespace Scripts
                             Wait,
                             MoveToPrevious,
                             MoveToNext,
-                            ForceReset,
+                            ForceRestart,
                         }
 
                         public enum Conditions
@@ -1351,7 +1351,7 @@ namespace Scripts
                         {
                             DoNothing,
                             EndProjectile,
-                            EndProjectileOnFailure,
+                            EndProjectileOnRestart,
                         }
 
 
@@ -1395,7 +1395,7 @@ namespace Scripts
                         [ProtoMember(38)] internal double OffsetMinRadius;
                         [ProtoMember(39)] internal bool NoTimedSpawns;
                         [ProtoMember(40)] internal double OffsetMaxRadius;
-                        [ProtoMember(41)] internal bool ForceReStart;
+                        [ProtoMember(41)] internal bool ForceRestart;
                         [ProtoMember(42)] internal VantagePointRelativeTo AdjustDestination;
                     }
 

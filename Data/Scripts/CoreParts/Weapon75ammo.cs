@@ -321,7 +321,7 @@ namespace Scripts
                 {
                     new ApproachDef
                     {
-                        RestartCondition = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext, ForceReset -- A restart condition is when the end condition is reached without having met the start condition. 
+                        RestartCondition = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
                         OnRestartRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
                         Operators = StartEnd_And, // Controls how the start and end conditions are matched:  StartEnd_And, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
@@ -331,12 +331,12 @@ namespace Scripts
                         Start1Value = 60, // both conditions are evaluated before activation, use Ignore to skip
                         StartCondition2 = Ignore, // Ignore, Spawn, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         Start2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
-                        StartEvent = DoNothing, // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnFailure
+                        StartEvent = DoNothing, // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnRestart
                         EndCondition1 = DesiredElevation, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         End1Value = 1000, // both conditions are evaluated before activation, use Ignore to skip
                         EndCondition2 = Ignore, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
                         End2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
-                        EndEvent = DoNothing,  // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnFailure
+                        EndEvent = DoNothing,  // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnRestart
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
                         AdjustUpDir = true, // adjust upDir relative to set condition overtime
@@ -362,7 +362,7 @@ namespace Scripts
                         OffsetMaxRadius = 0, // Max Radius to offset from target.  
                         OffsetTime = 0, // How often to change the offset direction.
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
-                        ForceReStart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.
+                        ForceRestart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
                             Name = "", 
