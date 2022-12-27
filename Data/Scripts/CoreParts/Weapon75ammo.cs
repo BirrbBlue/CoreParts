@@ -353,7 +353,7 @@ namespace Scripts
                         TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         AdjustDestinationPosition = false, // End conditions relative to the target position will shift as the target moves
-                        AdjustDestination = Current, // Surface, Origin, MidPoint, Shooter, Target, Current
+                        AdjustDestination = Current, // Surface, Origin, MidPoint, Shooter, Target, Current (Straight ahead)
                         CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         Orbit = false, // Orbit the target
