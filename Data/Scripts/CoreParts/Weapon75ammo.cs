@@ -11,7 +11,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDe
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.Conditions;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StartFailure;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ReInitCondition;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.VantagePointRelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
@@ -321,8 +321,8 @@ namespace Scripts
                 {
                     new ApproachDef
                     {
-                        Failure = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext, ForceReset -- A failure is when the end condition is reached without having met the start condition. 
-                        OnFailureRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
+                        RestartCondition = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext, ForceReset -- A restart condition is when the end condition is reached without having met the start condition. 
+                        OnRestartRevertTo = -1, // -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
                         Operators = StartEnd_And, // Controls how the start and end conditions are matched:  StartEnd_And, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
                                                     // DistanceFromTarget[<=], DistanceToTarget[>=], Lifetime[>=], DeadTime[<=], MinTravelRequired[>=], MaxTravelRequired[<=],
@@ -353,6 +353,7 @@ namespace Scripts
                         TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
                         AdjustDestinationPosition = false, // End conditions relative to the target position will shift as the target moves
+                        AdjustDestination = Current, // Surface, Origin, MidPoint, Shooter, Target, Current
                         CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         Orbit = false, // Orbit the target
@@ -361,6 +362,7 @@ namespace Scripts
                         OffsetMaxRadius = 0, // Max Radius to offset from target.  
                         OffsetTime = 0, // How often to change the offset direction.
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
+                        ForceReStart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
                             Name = "", 
@@ -385,8 +387,8 @@ namespace Scripts
                     },
                     new ApproachDef
                     {
-                        Failure = Wait,
-                        OnFailureRevertTo = -1, 
+                        RestartCondition = Wait,
+                        OnRestartRevertTo = -1, 
                         StartCondition1 = Lifetime,
                         Start1Value = 0,
                         StartCondition2 = Ignore, 
