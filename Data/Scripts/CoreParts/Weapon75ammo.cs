@@ -355,13 +355,13 @@ namespace Scripts
                         Elevation = Surface, 
                         
                         //
-                        // Control if the vantage points update only at approach start or every frame that the approach is active.
+                        // Control if the vantagepoints update every frame or only at start.
                         //
-                        AdjustUp = true, // adjust upDir relative to set condition overtime
-                        AdjustSource = false, // Updated the approach vantage point as it moves/changes.
-                        AdjustDestination = false, // End conditions relative to the target position will shift as the target moves
+                        AdjustUp = true, // adjust upDir overtime
+                        AdjustSource = false, // Updated the source position overtime.
+                        AdjustDestination = false, // Update destination overtime
                         
-                        // Tweaks to vantage point behavior
+                        // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
