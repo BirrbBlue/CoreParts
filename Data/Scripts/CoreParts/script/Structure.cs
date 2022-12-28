@@ -1327,7 +1327,7 @@ namespace Scripts
                             RelativeToGravity,
                             TargetDirection,
                             TargetVelocity,
-                            RelativeToStoredTarget,
+                            RelativeToStoredDestination,
                         }
 
                         public enum RelativeTo
