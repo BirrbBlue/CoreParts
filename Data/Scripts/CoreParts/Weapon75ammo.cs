@@ -12,7 +12,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.Conditions;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ReInitCondition;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.VantagePointRelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.RelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
@@ -321,48 +321,73 @@ namespace Scripts
                 {
                     new ApproachDef
                     {
+                        // Start/End behaviors 
                         RestartCondition = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
                         OnRestartRevertTo = -1, // This applies if RestartCondition is set to ForceRestart and trigger requirement was met. -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
                         Operators = StartEnd_And, // Controls how the start and end conditions are matched:  StartEnd_And, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
+                        CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
+                        ForceRestart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.
+
+                        // Start/End conditions
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
                                                     // DistanceFromTarget[<=], DistanceToTarget[>=], Lifetime[>=], DeadTime[<=], MinTravelRequired[>=], MaxTravelRequired[<=],
                                                     // Ignore(skip this condition), Spawn(works per stage), DesiredElevation(tolerance can be set with ElevationTolerance)
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
-                        Start1Value = 60, // both conditions are evaluated before activation, use Ignore to skip
-                        StartCondition2 = Ignore, // Ignore, Spawn, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
-                        Start2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
-                        StartEvent = DoNothing, // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnRestart
-                        EndCondition1 = DesiredElevation, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
-                        End1Value = 1000, // both conditions are evaluated before activation, use Ignore to skip
-                        EndCondition2 = Ignore, // Ignore, DistanceFromTarget, Lifetime, MinTravelRequired, DesiredElevation (DO NOT set con1 and con2 to same value)
-                        End2Value = 0, // both conditions are evaluated before activation, use Ignore to skip
-                        EndEvent = DoNothing,  // What extra step to take when approach begins/ends: DoNothing, EndProjectile, EndProjectileOnRestart
-                        ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
-                        UpDirection = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
-                        AdjustUpDir = true, // adjust upDir relative to set condition overtime
-                        VantagePoint = Surface, // Surface, Target, Shooter, Origin, Current, MidPoint, Nothing (between target and shooter)
-                        AdjustVantagePoint = false, // Updated the approach vantage point as it moves/changes.
+                        StartCondition2 = Ignore, 
+                        EndCondition1 = DesiredElevation, 
+                        EndCondition2 = Ignore, 
+
+                        // Start/End thresholds -- both conditions are evaluated before activation, use Ignore to skip
+                        Start1Value = 60,
+                        Start2Value = 0,
+                        End1Value = 1000, 
+                        End2Value = 0, 
+                        
+                        // Special triggers when the start/end conditions are met (DoNothing, EndProjectile, EndProjectileOnRestart)
+                        StartEvent = DoNothing, 
+                        EndEvent = DoNothing,  
+                        
+                        // Relative positions and directions
+                        Up = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
+                        
+                        Source = Surface, // Origin, Shooter, Target, Surface, MidPoint, Current, Nothing, LastDestination,
+                        Destination = Target, 
+                        Elevation = Surface, 
+                        
+                        //
+                        // Control if the vantage points update only at approach start or every frame that the approach is active.
+                        //
+                        AdjustUp = true, // adjust upDir relative to set condition overtime
+                        AdjustSource = false, // Updated the approach vantage point as it moves/changes.
+                        AdjustDestination = false, // End conditions relative to the target position will shift as the target moves
+                        
+                        // Tweaks to vantage point behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
-                        LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
-                        PushLeadByTravelDistance = true, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
+                        ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
                         DesiredElevation = 100, // The desired elevation relative to vantagepoint 
-                        AdjustElevation = Surface, // Desired elevation adjusts in response relative changes between the proejctile and monitor variables. Options: Surface, Origin, MidPoint, Shooter, Target, Current
+
+                        // Controls the leading behavior
+                        LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
+                        PushLeadByTravelDistance = true, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
+
+                        // Modify speed and acceleration ratios while this approach is active
                         AccelMulti = 1.5, // Modify default acceleration by this factor
                         DeAccelMulti = 0, // Modifies your default deacceleration by this factor
                         TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
-                        AdjustDestinationPosition = false, // End conditions relative to the target position will shift as the target moves
-                        AdjustDestination = Target, // Surface, Origin, MidPoint, Shooter, Target, Current, Nothing (Straight ahead)
-                        CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
-                        AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
+
+                        // Target navigation behavior 
                         Orbit = false, // Orbit the target
                         OrbitRadius = 0, // The orbit radius to extend between the projectile and the target (target volume + this value)
                         OffsetMinRadius = 0, // Min Radius to offset from target.  
                         OffsetMaxRadius = 0, // Max Radius to offset from target.  
                         OffsetTime = 0, // How often to change the offset direction.
+                        
+                        // Other
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
-                        ForceRestart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.
+                        
+                        // Audio/Visual Section
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
                             Name = "", 
@@ -383,62 +408,8 @@ namespace Scripts
                                 Scale = 1,
                             },
                         },
+                        AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
                         AlternateSound = "BoosterStageSound" // if blank it will use default, must be a default version for this to be useable. 
-                    },
-                    new ApproachDef
-                    {
-                        RestartCondition = Wait,
-                        OnRestartRevertTo = -1, 
-                        StartCondition1 = Lifetime,
-                        Start1Value = 0,
-                        StartCondition2 = Ignore, 
-                        Start2Value = 0,
-                        EndCondition1 = DistanceFromTarget,
-                        End1Value = 10,
-                        EndCondition2 = Ignore,
-                        End2Value = 0,
-                        UpDirection = RelativeToGravity,
-                        AdjustUpDir = true,
-                        VantagePoint = Surface, 
-                        AdjustVantagePoint = false,
-                        AngleOffset = 0.5,
-                        LeadDistance = 5,
-                        PushLeadByTravelDistance = false,
-                        TrackingDistance = 10,
-                        DesiredElevation = 10,
-                        AdjustElevation = Target,
-                        AccelMulti = 1,
-                        SpeedCapMulti = 200,
-                        DeAccelMulti = 0, 
-                        TotalAccelMulti = 0, 
-                        AdjustDestinationPosition = true,
-                        CanExpireOnceStarted = false,
-                        AlternateModel = "", 
-                        Orbit = false, 
-                        OrbitRadius = 0, 
-                        OffsetMinRadius = 0, 
-                        OffsetTime = 0, 
-                        AlternateParticle = new ParticleDef
-                        {
-                            Name = "",
-                            Offset = Vector(x: 0, y: 0, z: 0),
-                            DisableCameraCulling = true,
-                            Extras = new ParticleOptionDef
-                            {
-                                Scale = 1,
-                            },
-                        },
-                        StartParticle = new ParticleDef // Optional particle to play when this stage begins
-                        {
-                            Name = "",
-                            Offset = Vector(x: 0, y: 0, z: 0),
-                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
-                            Extras = new ParticleOptionDef
-                            {
-                                Scale = 1,
-                            },
-                        },
-                        AlternateSound = "BoosterStageSound"
                     },
                 },
                 Mines = new MinesDef  // Note: This is being investigated. Please report to Github, any issues.
