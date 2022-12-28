@@ -57,7 +57,7 @@ namespace Scripts
             NpcSafe = false, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             Sync = new SynchronizeDef
             {
-                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment
+                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
                 PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
                 OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },
@@ -365,7 +365,7 @@ namespace Scripts
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
-                        DesiredElevation = 100, // The desired elevation relative to vantagepoint 
+                        DesiredElevation = 100, // The desired elevation relative to source 
 
                         // Controls the leading behavior
                         LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
