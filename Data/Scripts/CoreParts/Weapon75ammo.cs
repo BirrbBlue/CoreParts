@@ -343,14 +343,14 @@ namespace Scripts
                         End1Value = 1000, 
                         End2Value = 0, 
                         
-                        // Special triggers when the start/end conditions are met (DoNothing, EndProjectile, EndProjectileOnRestart)
+                        // Special triggers when the start/end conditions are met (DoNothing, EndProjectile, EndProjectileOnRestart, StoreDestination)
                         StartEvent = DoNothing, 
                         EndEvent = DoNothing,  
                         
                         // Relative positions and directions
                         Up = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity,
                         
-                        Source = Surface, // Origin, Shooter, Target, Surface, MidPoint, Current, Nothing, LastDestination,
+                        Source = Surface, // Origin, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredDestination,
                         Destination = Target, 
                         Elevation = Surface, 
                         

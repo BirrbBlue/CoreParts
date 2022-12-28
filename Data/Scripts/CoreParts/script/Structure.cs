@@ -1338,7 +1338,7 @@ namespace Scripts
                             MidPoint,
                             Current,
                             Nothing,
-                            LastDestination,
+                            StoredDestination,
                         }
 
                         public enum ConditionOperators
@@ -1354,6 +1354,7 @@ namespace Scripts
                             DoNothing,
                             EndProjectile,
                             EndProjectileOnRestart,
+                            StoreDestination,
                         }
 
 
@@ -1400,7 +1401,6 @@ namespace Scripts
                         [ProtoMember(41)] internal bool ForceRestart;
                         [ProtoMember(42)] internal RelativeTo Destination;
                     }
-
 
                     [ProtoContract]
                     public struct MinesDef
