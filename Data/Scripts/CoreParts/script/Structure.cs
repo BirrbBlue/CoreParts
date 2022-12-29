@@ -1403,6 +1403,7 @@ namespace Scripts
                         [ProtoMember(40)] internal double OffsetMaxRadius;
                         [ProtoMember(41)] internal bool ForceRestart;
                         [ProtoMember(42)] internal RelativeTo Destination;
+                        [ProtoMember(43)] internal bool DisableAvoidance;
                     }
 
                     [ProtoContract]

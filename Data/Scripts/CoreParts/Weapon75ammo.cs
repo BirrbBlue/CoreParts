@@ -386,7 +386,7 @@ namespace Scripts
                         
                         // Other
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
-                        
+                        DisableAvoidance = false, // Disable futureIntersect.
                         // Audio/Visual Section
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
