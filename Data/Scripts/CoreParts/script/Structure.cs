@@ -1329,7 +1329,8 @@ namespace Scripts
                             RelativeToGravity,
                             TargetDirection,
                             TargetVelocity,
-                            RelativeToStoredDestination,
+                            StoredStartDestination,
+                            StoredEndDestination,
                         }
 
                         public enum RelativeTo
@@ -1341,7 +1342,9 @@ namespace Scripts
                             MidPoint,
                             Current,
                             Nothing,
-                            StoredDestination,
+                            StoredStartDestination,
+                            StoredEndDestination,
+
                         }
 
                         public enum ConditionOperators
@@ -1404,6 +1407,8 @@ namespace Scripts
                         [ProtoMember(41)] internal bool ForceRestart;
                         [ProtoMember(42)] internal RelativeTo Destination;
                         [ProtoMember(43)] internal bool DisableAvoidance;
+                        [ProtoMember(44)] internal int StoredStartId;
+                        [ProtoMember(45)] internal int StoredEndId;
                     }
 
                     [ProtoContract]
