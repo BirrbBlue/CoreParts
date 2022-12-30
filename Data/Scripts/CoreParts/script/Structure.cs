@@ -927,6 +927,8 @@ namespace Scripts
                     [ProtoMember(12)] internal bool FireSound; // not used, can remove
                     [ProtoMember(13)] internal Vector3D AdvOffset;
                     [ProtoMember(14)] internal bool ArmWhenShot;
+                        
+                    [ProtoContract]
                     public struct TimedSpawnDef
                     {
                         public enum PointTypes
