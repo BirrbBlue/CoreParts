@@ -1298,6 +1298,7 @@ namespace Scripts
                         [ProtoMember(20)] internal double ScanRange;
                         [ProtoMember(21)] internal bool NoSteering;
                         [ProtoMember(22)] internal double FutureIntersectionRange;
+                        [ProtoMember(23)] internal double MinTurnSpeed;
                     }
 
                     [ProtoContract]
