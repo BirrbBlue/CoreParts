@@ -817,6 +817,13 @@ namespace Scripts
                             Wave,
                         }
 
+                        internal enum FactionColor
+                        {
+                            DontUse,
+                            Foreground,
+                            Background,
+                        }
+
                         [ProtoMember(1)] internal TracerBaseDef Tracer;
                         [ProtoMember(2)] internal string TracerMaterial;
                         [ProtoMember(3)] internal Randomize ColorVariance;
@@ -847,7 +854,7 @@ namespace Scripts
                             [ProtoMember(8)] internal string[] Textures;
                             [ProtoMember(9)] internal Texture TextureMode;
                             [ProtoMember(10)] internal bool AlwaysDraw;
-                            [ProtoMember(11)] internal bool UseFactionColor;
+                            [ProtoMember(11)] internal FactionColor FactionColor;
 
                             [ProtoContract]
                             public struct SegmentDef
@@ -881,7 +888,7 @@ namespace Scripts
                             [ProtoMember(9)] internal string[] Textures;
                             [ProtoMember(10)] internal Texture TextureMode;
                             [ProtoMember(11)] internal bool AlwaysDraw;
-                            [ProtoMember(12)] internal bool UseFactionColor;
+                            [ProtoMember(12)] internal FactionColor FactionColor;
                         }
                     }
 
