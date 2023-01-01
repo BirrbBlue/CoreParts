@@ -514,6 +514,7 @@ namespace Scripts
                             SegmentGap = 0f, // Uses Tracer textures and values
                             Speed = 1f, // meters per second
                             Color = Color(red: 1, green: 2, blue: 2.5f, alpha: 1),
+                            FactionColor = DontUse, // DontUse, Foreground, Background.
                             WidthMultiplier = 1f,
                             Reverse = false, 
                             UseLineVariance = true,

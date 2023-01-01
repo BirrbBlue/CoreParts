@@ -871,6 +871,7 @@ namespace Scripts
                                 [ProtoMember(10)] internal Randomize WidthVariance;
                                 [ProtoMember(11)] internal string[] Textures;
                                 [ProtoMember(12)] internal bool Enable;
+                                [ProtoMember(13)] internal FactionColor FactionColor;
                             }
                         }
 
