@@ -847,6 +847,7 @@ namespace Scripts
                             [ProtoMember(8)] internal string[] Textures;
                             [ProtoMember(9)] internal Texture TextureMode;
                             [ProtoMember(10)] internal bool AlwaysDraw;
+                            [ProtoMember(11)] internal bool UseFactionColor;
 
                             [ProtoContract]
                             public struct SegmentDef
@@ -880,6 +881,7 @@ namespace Scripts
                             [ProtoMember(9)] internal string[] Textures;
                             [ProtoMember(10)] internal Texture TextureMode;
                             [ProtoMember(11)] internal bool AlwaysDraw;
+                            [ProtoMember(12)] internal bool UseFactionColor;
                         }
                     }
 
