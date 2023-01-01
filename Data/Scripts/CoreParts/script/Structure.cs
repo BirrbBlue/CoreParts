@@ -817,7 +817,7 @@ namespace Scripts
                             Wave,
                         }
 
-                        internal enum FactionColor
+                        public enum FactionColor
                         {
                             DontUse,
                             Foreground,
