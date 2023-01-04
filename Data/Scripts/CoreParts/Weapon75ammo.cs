@@ -15,6 +15,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDe
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.RelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
@@ -326,16 +327,33 @@ namespace Scripts
                     {
                         // Start/End behaviors 
                         RestartCondition = MoveToPrevious, // Wait, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
-                        OnRestartRevertTo = -1, // This applies if RestartCondition is set to ForceRestart and trigger requirement was met. -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
+                        RestartList = new[] 
+                        { // This list is used if RestartCondition is set to ForceRestart and trigger requirement was met. -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
+                            new WeightedIdListDef
+                            {
+                                ApproachId = -1,
+                                Weight = Random(0, 99), // The approachId that rolls the highest number will be selected
+                            },
+                            new WeightedIdListDef
+                            {
+                                ApproachId = 0,
+                                Weight = Random(0, 55), 
+                            },
+                            new WeightedIdListDef
+                            {
+                                ApproachId = 1,
+                                Weight = Random(0, 31.5f),
+                            },
+                        },
                         Operators = StartEnd_And, // Controls how the start and end conditions are matched:  StartEnd_And, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
                         CanExpireOnceStarted = false, // This stages values will continue to apply until the end conditions are met.
-                        ForceRestart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.
+                        ForceRestart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.  
 
                         // Start/End conditions
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
                                                     // DistanceFromTarget[<=], DistanceToTarget[>=], Lifetime[>=], DeadTime[<=], MinTravelRequired[>=], MaxTravelRequired[<=],
                                                     // Ignore(skip this condition), Spawn(works per stage), DesiredElevation(tolerance can be set with ElevationTolerance),
-                                                    // NextTimeSpawn[<=]
+                                                    // NextTimedSpawn[<=], RelativeLifetime[>=], RelativeDeadTime[<=]
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
                         StartCondition2 = Ignore, 
                         EndCondition1 = DesiredElevation, 

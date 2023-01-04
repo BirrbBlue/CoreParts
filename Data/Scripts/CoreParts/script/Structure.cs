@@ -1333,7 +1333,9 @@ namespace Scripts
                             MaxTravelRequired,
                             Deadtime,
                             DistanceToTarget,
-                            NextTimeSpawn,
+                            NextTimedSpawn,
+                            RelativeLifetime,
+                            RelativeDeadtime,
                         }
 
                         public enum UpRelativeTo
@@ -1376,6 +1378,13 @@ namespace Scripts
                             StoreDestination,
                         }
 
+                        [ProtoContract]
+                        public struct WeightedIdListDef
+                        {
+
+                            [ProtoMember(1)] public int ApproachId;
+                            [ProtoMember(2)] public Randomize Weight;
+                        }
 
                         [ProtoMember(1)] internal ReInitCondition RestartCondition;
                         [ProtoMember(2)] internal Conditions StartCondition1;
@@ -1422,6 +1431,7 @@ namespace Scripts
                         [ProtoMember(43)] internal bool DisableAvoidance;
                         [ProtoMember(44)] internal int StoredStartId;
                         [ProtoMember(45)] internal int StoredEndId;
+                        [ProtoMember(46)] internal WeightedIdListDef[] RestartList;
                     }
 
                     [ProtoContract]
