@@ -1333,7 +1333,7 @@ namespace Scripts
                             MaxTravelRequired,
                             Deadtime,
                             DistanceToTarget,
-                            NextTimeSpawn,
+                            NextTimedSpawn,
                         }
 
                         public enum UpRelativeTo
