@@ -333,16 +333,22 @@ namespace Scripts
                             {
                                 ApproachId = -1,
                                 Weight = Random(0, 99), // The approachId that rolls the highest number will be selected
+                                End1WeightMod = 0, // modifies the weight value, if both conditions were true the highest roll between them wins
+                                End2WeightMod = 0, // modifies the weight value, if both conditions were true the highest roll between them wins
                             },
                             new WeightedIdListDef
                             {
                                 ApproachId = 0,
-                                Weight = Random(0, 55), 
+                                Weight = Random(0, 55),
+                                End1WeightMod = 0, 
+                                End2WeightMod = 0, 
                             },
                             new WeightedIdListDef
                             {
                                 ApproachId = 1,
                                 Weight = Random(0, 31.5f),
+                                End1WeightMod = 0, 
+                                End2WeightMod = 0, 
                             },
                         },
                         Operators = StartEnd_And, // Controls how the start and end conditions are matched:  StartEnd_And, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
