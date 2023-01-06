@@ -1385,7 +1385,7 @@ namespace Scripts
                             [ProtoMember(1)] public int ApproachId;
                             [ProtoMember(2)] public Randomize Weight;
                             [ProtoMember(3)] public double End1WeightMod;
-                            [ProtoMember(3)] public double End2WeightMod;
+                            [ProtoMember(4)] public double End2WeightMod;
                         }
 
                         [ProtoMember(1)] internal ReInitCondition RestartCondition;
