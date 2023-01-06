@@ -333,8 +333,8 @@ namespace Scripts
                             {
                                 ApproachId = -1,
                                 Weight = Random(0, 99), // The approachId that rolls the highest number will be selected
-                                End1WeightMod = 0, // modifies the weight value, if both conditions were true the highest roll between them wins
-                                End2WeightMod = 0, // modifies the weight value, if both conditions were true the highest roll between them wins
+                                End1WeightMod = 0, // multiplies the weight Start and End value by this number, if both End conditions were true the highest roll between them wins, 0 means disabled
+                                End2WeightMod = 0, 
                             },
                             new WeightedIdListDef
                             {
