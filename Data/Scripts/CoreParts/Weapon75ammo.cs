@@ -376,10 +376,10 @@ namespace Scripts
                         EndEvent = DoNothing,  
                         
                         // Relative positions and directions
-                        Up = RelativeToGravity, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity, StoredStartDestination, StoredEndDestination
+                        Up = RelativeToBlock, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity, UpStoredStartDestination, UpStoredStartDestination
                         
                         Source = Surface, // Origin, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredStartDestination, StoredEndDestination
-                        Destination = Target, 
+                        Destination = StoredStartDestination, 
                         Elevation = Surface, 
                         
                         //
