@@ -1336,6 +1336,7 @@ namespace Scripts
                             NextTimedSpawn,
                             RelativeLifetime,
                             RelativeDeadtime,
+                            SinceTimedSpawn,
                         }
 
                         public enum UpRelativeTo
