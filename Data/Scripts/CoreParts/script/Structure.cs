@@ -1360,7 +1360,6 @@ namespace Scripts
                             Nothing,
                             StoredStartDestination,
                             StoredEndDestination,
-
                         }
 
                         public enum ConditionOperators
@@ -1435,6 +1434,8 @@ namespace Scripts
                         [ProtoMember(44)] internal int StoredStartId;
                         [ProtoMember(45)] internal int StoredEndId;
                         [ProtoMember(46)] internal WeightedIdListDef[] RestartList;
+                        [ProtoMember(47)] internal RelativeTo StoredStartType;
+                        [ProtoMember(48)] internal RelativeTo StoredEndType;
                     }
 
                     [ProtoContract]

@@ -394,8 +394,11 @@ namespace Scripts
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
                         DesiredElevation = 100, // The desired elevation relative to source 
+                        // Storage Values
                         StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
                         StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
+                        StoredStartType = Current,
+                        StoredEndType = Target,
                         // Controls the leading behavior
                         LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
                         PushLeadByTravelDistance = true, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
