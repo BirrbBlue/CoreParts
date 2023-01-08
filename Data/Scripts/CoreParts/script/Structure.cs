@@ -1347,6 +1347,8 @@ namespace Scripts
                             TargetVelocity,
                             UpStoredStartDestination,
                             UpStoredEndDestination,
+                            UpStoredStartPosition,
+                            UpStoredEndPosition,
                         }
 
                         public enum RelativeTo
@@ -1360,6 +1362,8 @@ namespace Scripts
                             Nothing,
                             StoredStartDestination,
                             StoredEndDestination,
+                            StoredStartPosition,
+                            StoredEndPosition,
                         }
 
                         public enum ConditionOperators
@@ -1376,6 +1380,7 @@ namespace Scripts
                             EndProjectile,
                             EndProjectileOnRestart,
                             StoreDestination,
+                            StorePosition,
                         }
 
                         [ProtoContract]
