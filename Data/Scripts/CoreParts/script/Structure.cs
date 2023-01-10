@@ -1338,6 +1338,7 @@ namespace Scripts
                             RelativeDeadtime,
                             SinceTimedSpawn,
                             RelativeSpawns,
+                            EnemyTargetLoss,
                         }
 
                         public enum UpRelativeTo
