@@ -375,10 +375,12 @@ namespace Scripts
                         StartEvent = DoNothing, 
                         EndEvent = DoNothing,  
                         
+                        // Stored "Local" positions are always relative to the shooter and will remain true even if the shooter moves or rotates.
+
                         // Relative positions and directions
-                        Up = RelativeToBlock, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity, UpStoredStartPosition, UpStoredEndPosition
-                        
-                        Source = Surface, // Origin, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredStartPosition, StoredEndPosition
+                        Up = RelativeToBlock, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition
+                            
+                        Source = Surface, // Origin, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
                         Destination = StoredStartPosition, 
                         Elevation = Surface, 
                         
@@ -388,7 +390,10 @@ namespace Scripts
                         AdjustUp = true, // adjust upDir overtime
                         AdjustSource = false, // Updated the source position overtime.
                         AdjustDestination = false, // Update destination overtime
-                        
+                        LeadAndRotateSource = false, // Add lead and rotation to Source Position
+                        LeadAndRotateDestination = false, // Add lead and rotation to Destination Position
+                        NoElevationLead = false, // Disable lead and rotation for Elevation
+
                         // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance

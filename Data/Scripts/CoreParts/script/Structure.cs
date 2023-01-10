@@ -1350,6 +1350,8 @@ namespace Scripts
                             UpStoredEndDestination,
                             UpStoredStartPosition,
                             UpStoredEndPosition,
+                            UpStoredStartLocalPosition,
+                            UpStoredEndLocalPosition,
                         }
 
                         public enum RelativeTo
@@ -1365,6 +1367,7 @@ namespace Scripts
                             StoredEndDestination,
                             StoredStartPosition,
                             StoredEndPosition,
+                            LeadAndRotation
                         }
 
                         public enum ConditionOperators
@@ -1442,6 +1445,9 @@ namespace Scripts
                         [ProtoMember(46)] internal WeightedIdListDef[] RestartList;
                         [ProtoMember(47)] internal RelativeTo StoredStartType;
                         [ProtoMember(48)] internal RelativeTo StoredEndType;
+                        [ProtoMember(49)] internal bool LeadAndRotateSource;
+                        [ProtoMember(50)] internal bool LeadAndRotateDestination;
+                        [ProtoMember(51)] internal bool NoElevationLead;
                     }
 
                     [ProtoContract]
