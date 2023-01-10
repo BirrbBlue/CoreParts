@@ -1448,6 +1448,7 @@ namespace Scripts
                         [ProtoMember(49)] internal bool LeadAndRotateSource;
                         [ProtoMember(50)] internal bool LeadAndRotateDestination;
                         [ProtoMember(51)] internal bool NoElevationLead;
+                        [ProtoMember(52)] internal bool IgnoreAntiSmart;
                     }
 
                     [ProtoContract]
