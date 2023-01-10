@@ -1385,6 +1385,7 @@ namespace Scripts
                             EndProjectileOnRestart,
                             StoreDestination,
                             StorePosition,
+                            RefundHeat,
                         }
 
                         [ProtoContract]
@@ -1449,6 +1450,7 @@ namespace Scripts
                         [ProtoMember(50)] internal bool LeadAndRotateDestination;
                         [ProtoMember(51)] internal bool NoElevationLead;
                         [ProtoMember(52)] internal bool IgnoreAntiSmart;
+                        [ProtoMember(53)] internal double HeatRefund;
                     }
 
                     [ProtoContract]
