@@ -392,7 +392,7 @@ namespace Scripts
                         AdjustDestination = false, // Update destination overtime
                         LeadAndRotateSource = false, // Add lead and rotation to Source Position
                         LeadAndRotateDestination = false, // Add lead and rotation to Destination Position
-                        NoElevationLead = false, // Disable lead and rotation for Elevation
+                        NoElevationLead = false, // Disable lead for Elevation
 
                         // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
