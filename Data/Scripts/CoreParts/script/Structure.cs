@@ -1368,7 +1368,8 @@ namespace Scripts
                             StoredEndDestination,
                             StoredStartPosition,
                             StoredEndPosition,
-                            LeadAndRotation
+                            StoredStartLocalPosition,
+                            StoredEndLocalPosition,
                         }
 
                         public enum ConditionOperators
