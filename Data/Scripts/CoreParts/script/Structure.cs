@@ -648,6 +648,7 @@ namespace Scripts
                 [ProtoMember(28)] internal double HeatModifier;
                 [ProtoMember(29)] internal bool NpcSafe;
                 [ProtoMember(30)] internal SynchronizeDef Sync;
+                [ProtoMember(31)] internal bool DisableDamageScales;
 
                 [ProtoContract]
                 public struct SynchronizeDef
