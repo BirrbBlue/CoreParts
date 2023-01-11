@@ -378,7 +378,7 @@ namespace Scripts
                         // Stored "Local" positions are always relative to the shooter and will remain true even if the shooter moves or rotates.
 
                         // Relative positions and directions
-                        Up = RelativeToBlock, // RelativeToBlock, RelativeToGravity, TargetDirection, TargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition
+                        Up = RelativeToBlock, // RelativeToBlock, RelativeToShooter, RelativeToGravity, TargetDirection, TargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition
                             
                         Source = Surface, // Origin, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
                         Destination = StoredStartPosition, 
@@ -396,6 +396,7 @@ namespace Scripts
 
                         // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
+                        AngleVariance = Random(0, 0), // added to AngleOffset above, values of 0,0 disables feature
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to target
                         DesiredElevation = 100, // The desired elevation relative to source 
@@ -419,7 +420,7 @@ namespace Scripts
                         OrbitRadius = 0, // The orbit radius to extend between the projectile and the target (target volume + this value)
                         OffsetMinRadius = 0, // Min Radius to offset from target.  
                         OffsetMaxRadius = 0, // Max Radius to offset from target.  
-                        OffsetTime = 0, // How often to change the offset direction.
+                        OffsetTime = 0, // How often to change the offset radius.
                         
                         // Other
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
