@@ -1389,7 +1389,7 @@ namespace Scripts
                             EndProjectileOnRestart,
                             StoreDestination,
                             StorePosition,
-                            RefundHeat,
+                            Refund,
                         }
 
                         [ProtoContract]
@@ -1457,6 +1457,7 @@ namespace Scripts
                         [ProtoMember(52)] internal bool IgnoreAntiSmart;
                         [ProtoMember(53)] internal double HeatRefund;
                         [ProtoMember(54)] internal Randomize AngleVariance;
+                        [ProtoMember(55)] internal bool ReloadRefund;
                     }
 
                     [ProtoContract]
