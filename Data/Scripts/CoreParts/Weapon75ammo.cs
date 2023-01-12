@@ -331,7 +331,7 @@ namespace Scripts
                         RestartList = new[] 
                         { // This list is used if RestartCondition is set to ForceRestart and trigger requirement was met. -1 to reset to BEFORE the for approach stage was activated.  First stage is 0, second is 1, etc...
                             new WeightedIdListDef
-                            {// If all valid entries (below MaxRuns) role a 0, then the entry with the lowest current "Runs" will be selected, if two or more share lowest runs then the winner is decided by the order below.
+                            {// If all valid entries (below MaxRuns) role a 0 (i.e. weights are disabled), then the entry with the lowest current "Runs" will be selected, if two or more share lowest runs then the winner is decided by the order below.
                                 ApproachId = -1,
                                 MaxRuns = 0, // 0 means unlimited, defines how many times this entry can return true. 
                                 Weight = Random(0, 99), // The approachId that rolls the highest number will be selected
@@ -341,6 +341,7 @@ namespace Scripts
                             new WeightedIdListDef
                             {
                                 ApproachId = 0,
+                                MaxRuns = 0,
                                 Weight = Random(0, 55),
                                 End1WeightMod = 0, 
                                 End2WeightMod = 0, 
@@ -348,6 +349,7 @@ namespace Scripts
                             new WeightedIdListDef
                             {
                                 ApproachId = 1,
+                                MaxRuns = 0,
                                 Weight = Random(0, 31.5f),
                                 End1WeightMod = 0, 
                                 End2WeightMod = 0, 
