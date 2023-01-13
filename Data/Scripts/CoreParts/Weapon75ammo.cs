@@ -321,6 +321,7 @@ namespace Scripts
                     ScanRange = 0, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
                     NoSteering = false, // this disables target follow and instead travel straight ahead (but will respect offsets).
                     MinTurnSpeed = 0, // set this to a reasonable value to avoid projectiles from spinning in place or being too aggressive turing at slow speeds 
+                    NoTargetApproach = false, // If true approaches can begin prior to the projectile ever having had a target.
                 },
                 Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior. Cost level of 4+, or 5+ if used with steering.
                 {
@@ -432,6 +433,7 @@ namespace Scripts
                         IgnoreAntiSmart = false, // If set to true, antismart cannot change this approaches target.
                         HeatRefund = 0, // how much heat to refund when related EndEvent/StartEvent is met.
                         ReloadRefund = false, // Refund a reload (for max reload).
+
                         // Audio/Visual Section
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
