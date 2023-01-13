@@ -456,7 +456,8 @@ namespace Scripts
                             },
                         },
                         AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
-                        AlternateSound = "BoosterStageSound" // if blank it will use default, must be a default version for this to be useable. 
+                        AlternateSound = "BoosterStageSound", // if blank it will use default, must be a default version for this to be useable. 
+                        ModelRotateTime = 0, // If this value is greater than 0 then the projectile model will rotate to face the target, a value of 1 is instant (in ticks).
                     },
                 },
                 Mines = new MinesDef  // Note: This is being investigated. Please report to Github, any issues.

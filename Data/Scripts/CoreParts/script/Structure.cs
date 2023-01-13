@@ -1459,6 +1459,7 @@ namespace Scripts
                         [ProtoMember(53)] internal double HeatRefund;
                         [ProtoMember(54)] internal Randomize AngleVariance;
                         [ProtoMember(55)] internal bool ReloadRefund;
+                        [ProtoMember(56)] internal int ModelRotateTime;
                     }
 
                     [ProtoContract]
