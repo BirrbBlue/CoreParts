@@ -1460,7 +1460,6 @@ namespace Scripts
                         [ProtoMember(54)] internal Randomize AngleVariance;
                         [ProtoMember(55)] internal bool ReloadRefund;
                         [ProtoMember(56)] internal int ModelRotateTime;
-                        [ProtoMember(57)] internal bool FlipElevationDir;
                     }
 
                     [ProtoContract]
