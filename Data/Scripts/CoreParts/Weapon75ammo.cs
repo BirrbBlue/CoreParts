@@ -398,7 +398,7 @@ namespace Scripts
                         LeadAndRotateSource = false, // Add lead and rotation to Source Position
                         LeadAndRotateDestination = false, // Add lead and rotation to Destination Position
                         NoElevationLead = false, // Disable lead for Elevation
-
+                        FlipElevationDir = false, // Your source and destination determines if a giv.
                         // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         AngleVariance = Random(0, 0), // added to AngleOffset above, values of 0,0 disables feature
