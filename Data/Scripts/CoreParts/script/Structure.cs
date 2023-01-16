@@ -1342,6 +1342,7 @@ namespace Scripts
                             RelativeSpawns,
                             EnemyTargetLoss,
                             RelativeHealthLost,
+                            HealthRemaining,
                         }
 
                         public enum UpRelativeTo

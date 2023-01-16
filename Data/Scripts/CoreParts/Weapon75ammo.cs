@@ -367,8 +367,8 @@ namespace Scripts
                         // Start/End conditions
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
                                                     // Ignore(skip this condition)*, DistanceFromDestination[<=], DistanceToDestination[>=], Lifetime[>=], DeadTime[<=], MinTravelRequired[>=],
-                                                    // MaxTravelRequired[<=], Spawn(works per stage), DesiredElevation(tolerance can be set with ElevationTolerance),
-                                                    // NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=], RelativeHealthLost[>=]
+                                                    // MaxTravelRequired[<=], Spawn(works per stage), DesiredElevation(tolerance can be set with ElevationTolerance), NextTimedSpawn[<=], 
+                                                    // SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=], RelativeHealthLost[>=], HealthRemaining[<=]
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
                         StartCondition2 = Ignore, 
                         EndCondition1 = DesiredElevation, 
