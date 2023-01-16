@@ -338,7 +338,8 @@ namespace Scripts
                                 MaxRuns = 0, // 0 means unlimited, defines how many times this entry can return true. 
                                 Weight = Random(0, 99), // The approachId that rolls the highest number will be selected
                                 End1WeightMod = 0, // multiplies the weight Start and End value by this number, if both End conditions were true the highest roll between them wins, 0 means disabled
-                                End2WeightMod = 0, 
+                                End2WeightMod = 0,
+                                End3WeightMod = 0,
                             },
                             new WeightedIdListDef
                             {
@@ -346,7 +347,8 @@ namespace Scripts
                                 MaxRuns = 0,
                                 Weight = Random(0, 55),
                                 End1WeightMod = 0, 
-                                End2WeightMod = 0, 
+                                End2WeightMod = 0,
+                                End3WeightMod = 0,
                             },
                             new WeightedIdListDef
                             {
@@ -354,7 +356,8 @@ namespace Scripts
                                 MaxRuns = 0,
                                 Weight = Random(0, 31.5f),
                                 End1WeightMod = 0, 
-                                End2WeightMod = 0, 
+                                End2WeightMod = 0,
+                                End3WeightMod = 0,
                             },
                         },
                         Operators = StartEnd_And, // Controls how the start and end conditions are matched:  StartEnd_And*, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
@@ -365,18 +368,18 @@ namespace Scripts
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
                                                     // Ignore(skip this condition)*, DistanceFromDestination[<=], DistanceToDestination[>=], Lifetime[>=], DeadTime[<=], MinTravelRequired[>=],
                                                     // MaxTravelRequired[<=], Spawn(works per stage), DesiredElevation(tolerance can be set with ElevationTolerance),
-                                                    // NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=]
+                                                    // NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=], RelativeHealthLost[>=]
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
                         StartCondition2 = Ignore, 
                         EndCondition1 = DesiredElevation, 
-                        EndCondition2 = Ignore, 
-
+                        EndCondition2 = Ignore,
+                        EndCondition3 = Ignore,
                         // Start/End thresholds -- both conditions are evaluated before activation, use Ignore to skip
                         Start1Value = 60,
                         Start2Value = 0,
                         End1Value = 1000, 
-                        End2Value = 0, 
-                        
+                        End2Value = 0,
+                        End3Value = 0, 
                         // Special triggers when the start/end conditions are met (DoNothing*, EndProjectile, EndProjectileOnRestart, StorePosition, Refund)
                         StartEvent = DoNothing, 
                         EndEvent = DoNothing,  
@@ -399,6 +402,7 @@ namespace Scripts
                         AdjustDestination = false, // Update destination overtime
                         LeadAndRotateSource = false, // Add lead and rotation to Source Position
                         LeadAndRotateDestination = false, // Add lead and rotation to Destination Position
+                        SourceTrajectory = false, // If true the projectiles immediate trajectory will be relative to source instead of destination (e.g. quick response to elevation changes relative to source position)
                         // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir and ForwardDir
                         AngleVariance = Random(0, 0), // added to AngleOffset above, values of 0,0 disables feature
