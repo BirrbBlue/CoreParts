@@ -433,7 +433,10 @@ namespace Scripts
                         IgnoreAntiSmart = false, // If set to true, antismart cannot change this approaches target.
                         HeatRefund = 0, // how much heat to refund when related EndEvent/StartEvent is met.
                         ReloadRefund = false, // Refund a reload (for max reload).
-
+                        ToggleIngoreVoxels = false, // Toggles whatever the default IgnoreVoxel value to its opposite. 
+                        SelfAvoidance = false, // If this and FutureIntersect is enabled then projectiles will actively avoid the parent grids.
+                        TargetAvoidance = false, // If this and FutureIntersect is enabled then projectiles will actively avoid the target.
+                        SelfPhasing = false, // If enabled the projectiles can phase through the parent grids without doing damage or dying.
                         // Audio/Visual Section
                         AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
                         {
