@@ -178,7 +178,7 @@ namespace Scripts
                     },
                 },
             },
-            AreaOfDamage = new AreaOfDamageDef
+            AreaOfDamage = new AreaOfDamageDef // Note AOE is only applied to the Player/Grid it hit (and nearby projectiles) not nearby grids/players.
             {
                 ByBlockHit = new ByBlockHitDef
                 {
