@@ -327,6 +327,35 @@ namespace Scripts
                 },
                 Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior. Cost level of 4+, or 5+ if used with steering.
                 {
+                    /*
+                     * What are approaches? How do they interact with other config variables?  What problems do they solve? 
+                     *
+                     * At the most basic level an "approach" is a collection of variables that allow you, the mod author, to tell the projectile how to "approach"
+                     * an assigned "destination" when certain conditions are met and what to then do once it has arrived.  I say "destination" and not "target" on
+                     * purpose, while the destination may be the "target" it often is not.  Keep in mind that approaches merely "influence" the projectiles path to
+                     * the destination, they do not absolutely determine it.  Instead you are telling the projectile where you want it to go and through which
+                     * trajectory it should travel to get there, but ultimately you are setting the desired flight path, you are not the pilot.
+                     *
+                     * Approaches are an extension of Smarts and these variables are applied ontop of, not in place of, all other config variables. This means anything
+                     * you set in other parts of the config will still influence approaches and sometimes in unexpected ways (i.e. trackingDelay or not finding a target
+                     * can delay when an approaches begins).  In a few cases approaches have variables that override/alter/extend how non-approach variables behave.
+                     *
+                     * Approaches will not alter the path of a projectile until its start condition is met (and optionally maintained).  Prior to "starting" the
+                     * projectile will behave as it would have had there was no approach defined.  This is also the case once all approaches have completed. 
+                     *
+                     * Approaches require you to think about projectile navigation in an abstract manner.  This is a good time to restate that you are merely "influencing" the
+                     * projectile, you are not controlling/piloting it.  The battlefield is dynamic, always changing, you are setting objectives and providing rules to follow
+                     * if certain conditions are met, nothing more.  You must also remember that although you are setting variables like source, destination, elevation, lead
+                     * upDirection, forwardDirection etc... these variables merely "influence" the projectiles heading relative to its current position and velocity, they do not
+                     * represent its actual source/position, destination, direction nor elevation.
+                     *
+                     * Said another way, imagine your projectile half way between its launcher and the "target" and it is at this time that your approach "starts".  If you were
+                     * to then draw this scene out visually, you would draw three spheres representing positions which we will call "projectile current position", "source vector"
+                     * and "destination vector", where you only get to define the latter two.  You then define two directions, a forward direction and an up direction.  You can
+                     * also optionally set a desired "elevation" relative to the up direction and a desired "lead" relative to the forward direction, applied to the source and/or
+                     * destination.  Now draw a X and Y that represents the modified destination/source positions (taking into account elevation, lead, and rotations).  Your
+                     * projectiles heading will by default attempt to steer to the X destination, or alternatively to Y if you set sourceTrajectory to true. 
+                     */
                     new ApproachDef // * in comments means default
                     {
                         // Start/End behaviors 
