@@ -354,7 +354,7 @@ namespace Scripts
                      * and "positionC", where you only get to define the latter two.  You then define two directions, a forward direction and an up direction.  You can
                      * also optionally set a desired "elevation" relative to the up direction and a desired "lead" relative to the forward direction, applied to the positionB and/or
                      * positionC.  Now draw a 1 and 2 that represents the modified positionB and positionC positions (taking into account elevation, lead, and rotations).  Your
-                     * projectiles heading will by default attempt to steer to modified C position (1), or alternatively to modified B (2) if you set TrajectoryRelativeToB to true. 
+                     * projectiles heading will by default attempt to steer to modified C position (2), or alternatively to modified B (1) if you set TrajectoryRelativeToB to true. 
                      */
                     new ApproachDef // * in comments means default
                     {
