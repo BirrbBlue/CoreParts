@@ -331,9 +331,9 @@ namespace Scripts
                      * What are approaches? How do they interact with other config variables?  What problems do they solve? 
                      *
                      * At the most basic level an "approach" is a collection of variables that allow you, the mod author, to tell the projectile how to "approach"
-                     * an assigned "destination" when certain conditions are met and what to then do once it has arrived.  I say "destination" and not "target" on
-                     * purpose, while the destination may be the "target" it often is not.  Keep in mind that approaches merely "influence" the projectiles path to
-                     * the destination, they do not absolutely determine it.  Instead you are telling the projectile where you want it to go and through which
+                     * a desired "destination" (aka position) when certain conditions are met and what to then do once it has arrived.  I say "destination/position" and not "target" on
+                     * purpose, while the desired destination may be the "target" it often is not.  Keep in mind that approaches merely "influence" the projectiles path to
+                     * a desired position, they do not absolutely determine it.  Instead you are telling the projectile where you want it to go and through which
                      * trajectory it should travel to get there, but ultimately you are setting the desired flight path, you are not the pilot.
                      *
                      * Approaches are an extension of Smarts and these variables are applied ontop of, not in place of, all other config variables. This means anything
@@ -347,14 +347,14 @@ namespace Scripts
                      * projectile, you are not controlling/piloting it.  The battlefield is dynamic, always changing, you are setting objectives and providing rules to follow
                      * if certain conditions are met, nothing more.  You must also remember that although you are setting variables like positionB, positionC, elevation, lead
                      * upDirection, forwardDirection etc... these variables merely "influence" the projectiles heading relative to its current position and velocity, they do not
-                     * represent its actual source/position, destination, direction nor elevation.
+                     * represent its actual source nor destination positions, directions nor elevation.
                      *
                      * Said another way, imagine your projectile half way between its launcher and the "target" and it is at this time that your approach "starts".  If you were
-                     * to then draw this scene out visually, you would draw three spheres representing positions which we will call "projectile current position (aka A vector)", "B vector"
-                     * and "C vector", where you only get to define the latter two.  You then define two directions, a forward direction and an up direction.  You can
+                     * to then draw this scene out visually, you would draw three spheres representing positions which we will call "projectile current position (aka positionA)", "positionB"
+                     * and "positionC", where you only get to define the latter two.  You then define two directions, a forward direction and an up direction.  You can
                      * also optionally set a desired "elevation" relative to the up direction and a desired "lead" relative to the forward direction, applied to the positionB and/or
-                     * positionC.  Now draw a X and Y that represents the modified positionC/positionB positions (taking into account elevation, lead, and rotations).  Your
-                     * projectiles heading will by default attempt to steer to the X destination, or alternatively to Y if you set TrajectoryRelativeToB to true. 
+                     * positionC.  Now draw a 1 and 2 that represents the modified positionB and positionC positions (taking into account elevation, lead, and rotations).  Your
+                     * projectiles heading will by default attempt to steer to modified C position (1), or alternatively to modified B (2) if you set TrajectoryRelativeToB to true. 
                      */
                     new ApproachDef // * in comments means default
                     {
@@ -397,9 +397,10 @@ namespace Scripts
                         // Start/End conditions
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
                                                     // Ignore(skip this condition)*, DistanceFromPositionC[<=], DistanceToPositionC[>=], DistanceFromPositionB[<=], DistanceToPositionB[>=]
-                                                    // Lifetime[>=], DeadTime[<=], MinTravelRequired[>=], MaxTravelRequired[<=], Spawn(works per stage), DistanceFromTarget[<=], DistanceToTarget[>=]
-                                                    // DesiredElevation(tolerance can be set with ElevationTolerance), NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=]
-                                                    // RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=], RelativeHealthLost[>=], HealthRemaining[<=]
+                                                    // DistanceFromTarget[<=], DistanceToTarget[>=], DistanceFromEndTrajectory[<=], DistanceToEndTrajectory[>=], Lifetime[>=], DeadTime[<=],
+                                                    // MinTravelRequired[>=], MaxTravelRequired[<=], Spawn(per stage), DesiredElevation(tolerance can be set with ElevationTolerance),
+                                                    // NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=],
+                                                    // RelativeHealthLost[>=], HealthRemaining[<=],
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
                         StartCondition2 = Ignore, 
                         EndCondition1 = DesiredElevation, 

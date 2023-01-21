@@ -1348,6 +1348,8 @@ namespace Scripts
                             DistanceToPositionB,
                             DistanceFromTarget,
                             DistanceToTarget,
+                            DistanceFromEndTrajectory,
+                            DistanceFromToTrajectory,
                         }
 
                         public enum UpRelativeTo
