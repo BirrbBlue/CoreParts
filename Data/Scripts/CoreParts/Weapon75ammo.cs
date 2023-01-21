@@ -412,7 +412,7 @@ namespace Scripts
                         End1Value = 1000, 
                         End2Value = 0,
                         End3Value = 0, 
-                        // Special triggers when the start/end conditions are met (DoNothing*, EndProjectile, EndProjectileOnRestart, StorePosition, Refund)
+                        // Special triggers when the start/end conditions are met (DoNothing*, EndProjectile, EndProjectileOnRestart, StorePositionA, StorePositionB, StorePositionC, Refund)
                         StartEvent = DoNothing, 
                         EndEvent = DoNothing,  
                         

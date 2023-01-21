@@ -1417,8 +1417,11 @@ namespace Scripts
                             EndProjectile,
                             EndProjectileOnRestart,
                             StoreDontUse,
-                            StorePosition,
+                            StorePositionDontUse,
                             Refund,
+                            StorePositionA,
+                            StorePositionB,
+                            StorePositionC,
                         }
 
                         [ProtoContract]
