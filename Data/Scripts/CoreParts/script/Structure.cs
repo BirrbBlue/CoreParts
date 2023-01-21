@@ -1329,13 +1329,13 @@ namespace Scripts
                         {
                             Ignore,
                             Spawn,
-                            DistanceFromDestination,
+                            DistanceFromPositionC,
                             Lifetime,
                             DesiredElevation,
                             MinTravelRequired,
                             MaxTravelRequired,
                             Deadtime,
-                            DistanceToDestination,
+                            DistanceToPositionC,
                             NextTimedSpawn,
                             RelativeLifetime,
                             RelativeDeadtime,
@@ -1344,6 +1344,10 @@ namespace Scripts
                             EnemyTargetLoss,
                             RelativeHealthLost,
                             HealthRemaining,
+                            DistanceFromPositionB,
+                            DistanceToPositionB,
+                            DistanceFromTarget,
+                            DistanceToTarget,
                         }
 
                         public enum UpRelativeTo
@@ -1360,12 +1364,12 @@ namespace Scripts
                             UpStoredEndLocalPosition,
                             UpRelativeToShooter,
                             UpOriginDirection,
-                            UpDestinationDirection,
+                            UpElevationDirection,
                         }
 
                         public enum FwdRelativeTo
                         {
-                            ForwardDestinationDirection,
+                            ForwardElevationDirection,
                             ForwardRelativeToBlock,
                             ForwardRelativeToGravity,
                             ForwardTargetDirection,
@@ -1431,7 +1435,7 @@ namespace Scripts
                         [ProtoMember(2)] internal Conditions StartCondition1;
                         [ProtoMember(3)] internal Conditions EndCondition1;
                         [ProtoMember(4)] internal UpRelativeTo Up;
-                        [ProtoMember(5)] internal RelativeTo Source;
+                        [ProtoMember(5)] internal RelativeTo PositionB;
                         [ProtoMember(6)] internal double AngleOffset;
                         [ProtoMember(7)] internal double Start1Value;
                         [ProtoMember(8)] internal double End1Value;
@@ -1439,14 +1443,14 @@ namespace Scripts
                         [ProtoMember(10)] internal double DesiredElevation;
                         [ProtoMember(11)] internal double AccelMulti;
                         [ProtoMember(12)] internal double SpeedCapMulti;
-                        [ProtoMember(13)] internal bool AdjustDestination;
+                        [ProtoMember(13)] internal bool AdjustPositionC;
                         [ProtoMember(14)] internal bool CanExpireOnceStarted;
                         [ProtoMember(15)] internal ParticleDef AlternateParticle;
                         [ProtoMember(16)] internal string AlternateSound;
                         [ProtoMember(17)] internal string AlternateModel;
                         [ProtoMember(18)] internal int OnRestartRevertTo;
                         [ProtoMember(19)] internal ParticleDef StartParticle;
-                        [ProtoMember(20)] internal bool AdjustSource;
+                        [ProtoMember(20)] internal bool AdjustPositionB;
                         [ProtoMember(21)] internal bool AdjustUp;
                         [ProtoMember(22)] internal bool PushLeadByTravelDistance;
                         [ProtoMember(23)] internal double TrackingDistance;
@@ -1468,15 +1472,15 @@ namespace Scripts
                         [ProtoMember(39)] internal bool NoTimedSpawns;
                         [ProtoMember(40)] internal double OffsetMaxRadius;
                         [ProtoMember(41)] internal bool ForceRestart;
-                        [ProtoMember(42)] internal RelativeTo Destination;
+                        [ProtoMember(42)] internal RelativeTo PositionC;
                         [ProtoMember(43)] internal bool DisableAvoidance;
                         [ProtoMember(44)] internal int StoredStartId;
                         [ProtoMember(45)] internal int StoredEndId;
                         [ProtoMember(46)] internal WeightedIdListDef[] RestartList;
                         [ProtoMember(47)] internal RelativeTo StoredStartType;
                         [ProtoMember(48)] internal RelativeTo StoredEndType;
-                        [ProtoMember(49)] internal bool LeadAndRotateSource;
-                        [ProtoMember(50)] internal bool LeadAndRotateDestination;
+                        [ProtoMember(49)] internal bool LeadRotateElevatePositionB;
+                        [ProtoMember(50)] internal bool LeadRotateElevatePositionC;
                         [ProtoMember(51)] internal bool NoElevationLead;
                         [ProtoMember(52)] internal bool IgnoreAntiSmart;
                         [ProtoMember(53)] internal double HeatRefund;
@@ -1489,10 +1493,11 @@ namespace Scripts
                         [ProtoMember(60)] internal bool SelfAvoidance;
                         [ProtoMember(61)] internal bool TargetAvoidance;
                         [ProtoMember(62)] internal bool SelfPhasing;
-                        [ProtoMember(63)] internal bool SourceTrajectory;
+                        [ProtoMember(63)] internal bool TrajectoryRelativeToB;
                         [ProtoMember(64)] internal Conditions EndCondition3;
                         [ProtoMember(65)] internal double End3Value;
                         [ProtoMember(66)] internal bool SwapNavigationType;
+                        [ProtoMember(67)] internal bool ElevationRelativeToC;
                     }
 
                     [ProtoContract]

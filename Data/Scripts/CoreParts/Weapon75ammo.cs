@@ -345,16 +345,16 @@ namespace Scripts
                      *
                      * Approaches require you to think about projectile navigation in an abstract manner.  This is a good time to restate that you are merely "influencing" the
                      * projectile, you are not controlling/piloting it.  The battlefield is dynamic, always changing, you are setting objectives and providing rules to follow
-                     * if certain conditions are met, nothing more.  You must also remember that although you are setting variables like source, destination, elevation, lead
+                     * if certain conditions are met, nothing more.  You must also remember that although you are setting variables like positionB, positionC, elevation, lead
                      * upDirection, forwardDirection etc... these variables merely "influence" the projectiles heading relative to its current position and velocity, they do not
                      * represent its actual source/position, destination, direction nor elevation.
                      *
                      * Said another way, imagine your projectile half way between its launcher and the "target" and it is at this time that your approach "starts".  If you were
-                     * to then draw this scene out visually, you would draw three spheres representing positions which we will call "projectile current position", "source vector"
-                     * and "destination vector", where you only get to define the latter two.  You then define two directions, a forward direction and an up direction.  You can
-                     * also optionally set a desired "elevation" relative to the up direction and a desired "lead" relative to the forward direction, applied to the source and/or
-                     * destination.  Now draw a X and Y that represents the modified destination/source positions (taking into account elevation, lead, and rotations).  Your
-                     * projectiles heading will by default attempt to steer to the X destination, or alternatively to Y if you set sourceTrajectory to true. 
+                     * to then draw this scene out visually, you would draw three spheres representing positions which we will call "projectile current position (aka A vector)", "B vector"
+                     * and "C vector", where you only get to define the latter two.  You then define two directions, a forward direction and an up direction.  You can
+                     * also optionally set a desired "elevation" relative to the up direction and a desired "lead" relative to the forward direction, applied to the positionB and/or
+                     * positionC.  Now draw a X and Y that represents the modified positionC/positionB positions (taking into account elevation, lead, and rotations).  Your
+                     * projectiles heading will by default attempt to steer to the X destination, or alternatively to Y if you set TrajectoryRelativeToB to true. 
                      */
                     new ApproachDef // * in comments means default
                     {
@@ -396,9 +396,10 @@ namespace Scripts
 
                         // Start/End conditions
                         StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
-                                                    // Ignore(skip this condition)*, DistanceFromDestination[<=], DistanceToDestination[>=], Lifetime[>=], DeadTime[<=], MinTravelRequired[>=],
-                                                    // MaxTravelRequired[<=], Spawn(works per stage), DesiredElevation(tolerance can be set with ElevationTolerance), NextTimedSpawn[<=], 
-                                                    // SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=], RelativeHealthLost[>=], HealthRemaining[<=]
+                                                    // Ignore(skip this condition)*, DistanceFromPositionC[<=], DistanceToPositionC[>=], DistanceFromPositionB[<=], DistanceToPositionB[>=]
+                                                    // Lifetime[>=], DeadTime[<=], MinTravelRequired[>=], MaxTravelRequired[<=], Spawn(works per stage), DistanceFromTarget[<=], DistanceToTarget[>=]
+                                                    // DesiredElevation(tolerance can be set with ElevationTolerance), NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=]
+                                                    // RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=], RelativeHealthLost[>=], HealthRemaining[<=]
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
                         StartCondition2 = Ignore, 
                         EndCondition1 = DesiredElevation, 
@@ -416,11 +417,11 @@ namespace Scripts
                         
                         // Stored "Local" positions are always relative to the shooter and will remain true even if the shooter moves or rotates.
 
-                        // Relative positions and directions
-                        Forward = ForwardDestinationDirection, // ForwardDestinationDirection*, ForwardRelativeToBlock, ForwardRelativeToShooter, ForwardRelativeToGravity, ForwardTargetDirection, ForwardTargetVelocity, ForwardStoredStartPosition, ForwardStoredEndPosition, ForwardStoredStartLocalPosition, ForwardStoredEndLocalPosition, ForwardOriginDirection    
-                        Up = UpRelativeToBlock, // UpRelativeToBlock*, UpRelativeToShooter, UpRelativeToGravity, UpTargetDirection, UpTargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition, UpOriginDirection, UpDestinationDirection
-                        Source = Surface, // Origin*, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
-                        Destination = StoredStartPosition, 
+                        // Relative positions and directions (relative to projectile current position aka PositionA)
+                        Forward = ForwardElevationDirection, // ForwardElevationDirection*, ForwardRelativeToBlock, ForwardRelativeToShooter, ForwardRelativeToGravity, ForwardTargetDirection, ForwardTargetVelocity, ForwardStoredStartPosition, ForwardStoredEndPosition, ForwardStoredStartLocalPosition, ForwardStoredEndLocalPosition, ForwardOriginDirection    
+                        Up = UpRelativeToBlock, // UpRelativeToBlock*, UpRelativeToShooter, UpRelativeToGravity, UpTargetDirection, UpTargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition, UpOriginDirection, UpElevationDirection
+                        PositionB = Surface, // Origin*, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
+                        PositionC = StoredStartPosition, 
                         Elevation = Surface, 
                         
                         //
@@ -428,21 +429,22 @@ namespace Scripts
                         //
                         AdjustForward = true, // adjust forwardDir overtime.
                         AdjustUp = true, // adjust upDir overtime
-                        AdjustSource = false, // Updated the source position overtime.
-                        AdjustDestination = false, // Update destination overtime
-                        LeadAndRotateSource = false, // Add lead and rotation to Source Position
-                        LeadAndRotateDestination = false, // Add lead and rotation to Destination Position
-                        SourceTrajectory = false, // If true the projectiles immediate trajectory will be relative to source instead of destination (e.g. quick response to elevation changes relative to source position)
+                        AdjustPositionB = false, // Updated the position overtime.
+                        AdjustPositionC = false, // Update the position overtime.
+                        LeadRotateElevatePositionB = false, // Add Lead, Rotation and DesiredElevation to PositionB
+                        LeadRotateElevatePositionC = false, // Add Lead, Rotation and DesiredElevation to PositionC
+                        TrajectoryRelativeToB = false, // If true the projectiles immediate trajectory will be relative to PositionB instead of PositionC (e.g. quick response to elevation changes relative to PositionB position assuming that position is closer to PositionA)
+                        ElevationRelativeToC = false, // If true the projectiles desired elevation will be relative to PositionC instead of PositionB (e.g. quick response to elevation changes relative to PositionC position assuming that position is closer to PositionA)
                         // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir and ForwardDir
                         AngleVariance = Random(0, 0), // added to AngleOffset above, values of 0,0 disables feature
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
-                        TrackingDistance = 100, // Minimum travel distance before projectile begins racing to Destination
-                        DesiredElevation = 100, // The desired elevation relative to source 
+                        TrackingDistance = 100, // Minimum travel distance before projectile begins racing to heading
+                        DesiredElevation = 100, // The desired elevation relative to reference position 
                         // Storage Values
                         StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
                         StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
-                        StoredStartType = Current, // Uses same values as source/destination/elevation
+                        StoredStartType = Current, // Uses same values as PositionB/PositionC/Elevation
                         StoredEndType = Target,
                         // Controls the leading behavior
                         LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
@@ -454,11 +456,11 @@ namespace Scripts
                         TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
                         SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
 
-                        // Destination navigation behavior 
-                        Orbit = false, // Orbit the Destination
-                        OrbitRadius = 0, // The orbit radius to extend between the projectile and the Destination (target volume + this value)
-                        OffsetMinRadius = 0, // Min Radius to offset from Destination.  
-                        OffsetMaxRadius = 0, // Max Radius to offset from Destination.  
+                        // navigation behavior 
+                        Orbit = false, // Orbit the Position
+                        OrbitRadius = 0, // The orbit radius to extend between the projectile and the Position (target volume + this value)
+                        OffsetMinRadius = 0, // Min Radius to offset from Position.  
+                        OffsetMaxRadius = 0, // Max Radius to offset from Position.  
                         OffsetTime = 0, // How often to change the offset radius.
                         
                         // Other
