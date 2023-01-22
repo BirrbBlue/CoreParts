@@ -1393,7 +1393,7 @@ namespace Scripts
                             Target,
                             Surface,
                             MidPoint,
-                            Current,
+                            PositionA,
                             Nothing,
                             StoredStartDontUse,
                             StoredEndDontUse,
